@@ -1,0 +1,25 @@
+-- local utl = require 'util.utl'
+local on_attach = require("util.lsp").on_attach
+ -- local lspconfig = require("lspconfig")
+
+-- local capabilities = require('blink.cmp').get_lsp_capabilities()
+vim.lsp.config.clangd = ({
+  on_attach = on_attach,
+  capabilities = {
+    -- capabilities,
+    offsetEncoding = { 'utf-8', 'utf-16' },
+  },
+  cmd = { 'clangd' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+  root_dir = vim.fs.dirname(vim.fs.find({
+    '.clangd',
+    '.clang-tidy',
+    '.clang-format',
+    '.compile_flags.json',
+    'cofigure.ac',
+    '.git'
+  })[1]),
+  single_file_support = true,
+})
+
+vim.lsp.enable({'clangd'})

@@ -1,0 +1,17 @@
+-- local lspconfig = require("lspconfig")
+-- 
+-- lspconfig.harper_ls.setup({
+--   cmd = { 'harper-ls', '--stdio' },
+--   filetypes = {
+--     'markdown',
+--   },
+--   root_dir = function(fname)
+--     return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+--   end,
+--   single_file_support = true,
+--   settings = {
+--     ["harper-ls"] = {
+--       userDictPath = "~/dictionaries/words.txt"
+--     }
+--   }
+-- })
