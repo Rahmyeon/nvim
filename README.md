@@ -6,6 +6,7 @@
 
 
 ## Directory structure
+```
 nvim/
 ├── init.lua
 ├── lazy-lock.json
@@ -51,3 +52,4 @@ nvim/
 │       ├── icons.lua
 │       ├── lsp.lua
 │       └── util
+```
