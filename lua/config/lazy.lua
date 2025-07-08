@@ -104,8 +104,8 @@ require("config.keymaps")
 -- vim.cmd('runtime! lua/keymaps/*.lua')
 
 -- Lsp directory required
-vim.cmd('runtime! lua/lsp/*.lua')
-
+-- vim.cmd('runtime! lua/lsp/*.lua')
+require("lsp")
 
 
 -- local opts = {

@@ -20,7 +20,7 @@ return { "catppuccin/nvim",
           ["NoiceCmdlinePopupBorder"] = { fg = macchiato.blue },
           ["NoiceCmdlinePopupTitle"] = { fg = macchiato.blue },
           ["NoiceCmdlineIcon"] = { fg = macchiato.blue },
-          ["Pmenu"] = { bg = "none" },
+          -- ["Pmenu"] = { bg = "none" },
           ["@markup.quote.markdown"] = { fg = macchiato.text, bold = false },
           SnacksPickerBox = { bg = "none" }, -- Added subtle bg
           VoidFloatTerm = { fg = macchiato.blue },

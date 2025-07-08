@@ -22,6 +22,7 @@ return {
   -- ---@type blink.cmp.Config
   opts = {
     snippets = { preset = 'luasnip' },
+    fuzzy = { implementation = "prefer_rust" },
     cmdline = {
       keymap = {
         preset = 'enter',
