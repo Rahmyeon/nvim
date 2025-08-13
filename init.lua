@@ -85,7 +85,6 @@ require("config.lazy")
 -- Enable true color support
 
 -- Now load nvim-colorizer
--- require('Enable').setup()
 -- disable status bar
 vim.opt.laststatus=0
 --  vim.lsp.set_log_level("debug")

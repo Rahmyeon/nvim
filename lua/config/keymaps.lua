@@ -16,6 +16,7 @@ local opts = { noremap = true, silent = true }
 -- Map 'dm' followed by any character to delete that mark
 keymap.set('n', 'dm', ':delmarks ', opts)
 keymap.set('n', '<leader>la', ':Lazy<CR>', opts)
+keymap.set('n', '<leader>ma', ':Mason<CR>', opts)
 -- Notify.nvim
 keymap.set("n", "<leader>qe", ":Noice dismiss<CR>", opts) -- Dismiss all notifications
 
@@ -114,3 +115,11 @@ keymap.set('n', 'dm', ':delmarks ', opts)
 
 -- Preview mark
  keymap.set('n', 'm:', ':lua require("Setup.marks").preview_mark()<CR>', { noremap = true, silent = true, desc = "Preview mark" })
+
+vim.keymap.set("n", "<leader>dt", function()
+   if vim.diagnostic.is_enabled() then
+     vim.diagnostic.enable(false)
+   else
+   vim.diagnostic.enable()
+   end
+end)

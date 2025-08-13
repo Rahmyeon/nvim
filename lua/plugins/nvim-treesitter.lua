@@ -6,6 +6,7 @@ return {
 			enable = true,
 		},
 		ensure_installed = {
+      "c_sharp",
 			"lua",
 			"dockerfile",
 			"gitignore",
@@ -16,14 +17,14 @@ return {
 			"python",
 			"c",
 			"cpp",
-			"zig",
+			-- "zig",
       "markdown",
       "markdown_inline",
       "toml",
       "json",
       "java",
-      "org",
-      "elisp"
+      -- "org",
+      -- "elisp"
 		},
 		auto_install = true,
 		highlight = {
