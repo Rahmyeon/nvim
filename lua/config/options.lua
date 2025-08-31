@@ -56,4 +56,16 @@ opt.guicursor =
 	"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 opt.encoding = "UTF-8"
 
+-- Performance
+opt.redrawtime = 10000
+opt.maxmempattern = 20000
+
 -- Example in your init.lua or a file like lua/config/lsp.lua
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+---@diagnostic disable-next-line: duplicate-set-field
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = "rounded" -- Or any other border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end

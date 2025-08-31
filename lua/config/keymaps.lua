@@ -47,6 +47,8 @@ keymap.set("n", "<leader>no", ":noh<CR>", { noremap = true, silent = false })
 -- Create a function to toggle window zoom
 keymap.set("n", "<leader>cv", ":vsplit<CR>", opts) --Split Vertically
 keymap.set("n", "<leader>ch", ":split<CR>", opts) --Split horzonatlly
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 keymap.set("n", "<C-d>", "<C-d>zz", opts)
 keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
@@ -123,3 +125,12 @@ vim.keymap.set("n", "<leader>dt", function()
    vim.diagnostic.enable()
    end
 end)
+
+vim.keymap.set("n", "<leader>pa", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("file:", path)
+end)
+
+vim.keymap.set("n", "Y", "y$", { desc = " Yank to the end of the line"})
+vim.keymap.set({"n", "v"}, "<leader>dd", '"_d', { desc = "Delete without yanking"})

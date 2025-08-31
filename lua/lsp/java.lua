@@ -1,8 +1,73 @@
--- local utl = require 'util.utl'
-local on_attach = require("util.lsp").on_attach
--- local lspconfig = require("lspconfig")
+---@brief
+---
+--- https://projects.eclipse.org/projects/eclipse.jdt.ls
+---
+--- Language server for Java.
+---
+--- IMPORTANT: If you want all the features jdtls has to offer, [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls)
+--- is highly recommended. If all you need is diagnostics, completion, imports, gotos and formatting and some code actions
+--- you can keep reading here.
+---
+--- For manual installation you can download precompiled binaries from the
+--- [official downloads site](http://download.eclipse.org/jdtls/snapshots/?d)
+--- and ensure that the `PATH` variable contains the `bin` directory of the extracted archive.
+---
+--- ```lua
+---   -- init.lua
+---   vim.lsp.enable('jdtls')
+--- ```
+---
+--- You can also pass extra custom jvm arguments with the JDTLS_JVM_ARGS environment variable as a space separated list of arguments,
+--- that will be converted to multiple --jvm-arg=<param> args when passed to the jdtls script. This will allow for example tweaking
+--- the jvm arguments or integration with external tools like lombok:
+---
+--- ```sh
+--- export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/java/lombok.jar"
+--- ```
+---
+--- For automatic installation you can use the following unofficial installers/launchers under your own risk:
+---   - [jdtls-launcher](https://github.com/eruizc-dev/jdtls-launcher) (Includes lombok support by default)
+---     ```lua
+---       -- init.lua
+---       vim.lsp.config('jdtls', { cmd = { 'jdtls' } })
+---     ```
 
---java
+local handlers = require 'vim.lsp.handlers'
+
+local env = {
+  HOME = vim.uv.os_homedir(),
+  XDG_CACHE_HOME = os.getenv 'XDG_CACHE_HOME',
+  JDTLS_JVM_ARGS = os.getenv 'JDTLS_JVM_ARGS',
+}
+
+local function get_cache_dir()
+  return env.XDG_CACHE_HOME and env.XDG_CACHE_HOME or env.HOME .. '/.cache'
+end
+
+local function get_jdtls_cache_dir()
+  return get_cache_dir() .. '/jdtls'
+end
+
+local function get_jdtls_config_dir()
+  return get_jdtls_cache_dir() .. '/config'
+end
+
+local function get_jdtls_workspace_dir()
+  return get_jdtls_cache_dir() .. '/workspace'
+end
+
+local function get_jdtls_jvm_args()
+  local args = {}
+  for a in string.gmatch((env.JDTLS_JVM_ARGS or ''), '%S+') do
+    local arg = string.format('--jvm-arg=%s', a)
+    table.insert(args, arg)
+  end
+  return unpack(args)
+end
+
+-- TextDocument version is reported as 0, override with nil so that
+-- the client doesn't think the document is newer and refuses to update
+-- See: https://github.com/eclipse/eclipse.jdt.ls/issues/1695
 local function fix_zero_version(workspace_edit)
   if workspace_edit and workspace_edit.documentChanges then
     for _, change in pairs(workspace_edit.documentChanges) do
@@ -25,15 +90,15 @@ local function on_textdocument_codeaction(err, actions, ctx)
     end
   end
 
-  vim.lsp.handlers[ctx.method](err, actions, ctx)
+  handlers[ctx.method](err, actions, ctx)
 end
 
 local function on_textdocument_rename(err, workspace_edit, ctx)
-  vim.lsp.handlers[ctx.method](err, fix_zero_version(workspace_edit), ctx)
+  handlers[ctx.method](err, fix_zero_version(workspace_edit), ctx)
 end
 
 local function on_workspace_applyedit(err, workspace_edit, ctx)
-  vim.lsp.handlers[ctx.method](err, fix_zero_version(workspace_edit), ctx)
+  handlers[ctx.method](err, fix_zero_version(workspace_edit), ctx)
 end
 
 -- Non-standard notification that can be used to display progress
@@ -44,39 +109,36 @@ local function on_language_status(_, result)
   command 'echohl None'
 end
 
-
-
-vim.lsp.config.jdtls = ({
-  -- capabilities = capabilities,
-  on_attach = on_attach,
-  -- cmd = {"jdtls", "-configuration", vim.fn.expand("$HOME") .. "/.cache/jdtls/config", "-data", vim.fn.expand("$HOME") .. "/.cache/jdtls/workspace" },
-  cmd = {"jdtls", "-configuration", "~/.cache/jdtls/config", "-data", "~/.cache/jdtls/workspace" },
-  -- cmd = {vim.fn.exepath("jdtls"), "-configuration", vim.fn.expand("$HOME") .. "/.cache/jdtls/config", "-data", vim.fn.expand("$HOME") .. "/.cache/jdtls/workspace" },
-  -- cmd = { 'jdtls' },
-  -- vim.fn.stdpath('data') .. "/mason/bin/jdtls.cmd"
+---@type vim.lsp.Config
+ vim.lsp.config.jdtls = ({
+  cmd = {
+    'jdtls',
+    '-configuration',
+    get_jdtls_config_dir(),
+    '-data',
+    get_jdtls_workspace_dir(),
+    get_jdtls_jvm_args(),
+  },
   filetypes = { 'java' },
-  -- root_dir = function(fname)
-  --   local root_files = {
-  --     -- Multi-module projects
-  --     { '.git', 'build.gradle', 'build.gradle.kts' },
-  --     -- Single-module projects
-  --     {
-  --       'build.xml', -- Ant
-  --       'pom.xml', -- Maven
-  --       'settings.gradle', -- Gradle
-  --       'settings.gradle.kts', -- Gradle
-  --     },
-  --   }
-  --   for _, patterns in ipairs(root_files) do
-  --     local root = utl.root_pattern(unpack(patterns))(fname)
-  --     if root then
-  --       return root
-  --     end
-  --   end
-  -- end,
-  single_file_support = true,
-  root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'pom.xml' })[1]),
+  root_markers = {
+    -- Multi-module projects
+    '.git',
+    'build.gradle',
+    'build.gradle.kts',
+    -- Single-module projects
+    'build.xml', -- Ant
+    'pom.xml', -- Maven
+    'settings.gradle', -- Gradle
+    'settings.gradle.kts', -- Gradle
+  },
+  init_options = {
+    workspace = get_jdtls_workspace_dir(),
+    jvm_args = {},
+    os_config = nil,
+  },
   handlers = {
+    -- Due to an invalid protocol implementation in the jdtls we have to conform these to be spec compliant.
+    -- https://github.com/eclipse/eclipse.jdt.ls/issues/376
     ['textDocument/codeAction'] = on_textdocument_codeaction,
     ['textDocument/rename'] = on_textdocument_rename,
     ['workspace/applyEdit'] = on_workspace_applyedit,

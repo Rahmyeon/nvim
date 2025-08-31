@@ -9,4 +9,4 @@ require('lsp.signs')
 require('lsp.ltex')
 
 -- require('lsp.cpp')
--- require('lsp.java')
+require('lsp.java')

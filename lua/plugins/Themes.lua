@@ -5,7 +5,7 @@ return { "catppuccin/nvim",
     integrations = {
       blink_cmp = true
     },
-    -- transparent_background = true, -- disables setting the background color.
+    transparent_background = true, -- disables setting the background color.
     -- transparent_background = false, -- disables setting the background color.
     highlight_overrides = {
       macchiato = function(macchiato)
@@ -20,8 +20,8 @@ return { "catppuccin/nvim",
           ["NoiceCmdlinePopupBorder"] = { fg = macchiato.blue },
           ["NoiceCmdlinePopupTitle"] = { fg = macchiato.blue },
           ["NoiceCmdlineIcon"] = { fg = macchiato.blue },
-          ["Normal"] = { bg = "#0f0d0e" },
-          ["NormalNC"] = { bg = "#0f0d0e" },
+          -- ["Normal"] = { bg = "#0f0d0e" },
+          -- ["NormalNC"] = { bg = "#0f0d0e" },
           ["Pmenu"] = { bg = "none" },
           -- ["PmenuSel"] = { bg = "#6e738d" },
           ["@markup.quote.markdown"] = { fg = macchiato.text, bold = false },
