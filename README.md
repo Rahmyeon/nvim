@@ -3,7 +3,7 @@
 - yazi needs to be preinstalled for yazi.nvim
 - jdtls may not work
 - Hopefully you find something useful
-
+test
 
 ## Directory structure
 ```
