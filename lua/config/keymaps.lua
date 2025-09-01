@@ -49,8 +49,8 @@ keymap.set("n", "<leader>cv", ":vsplit<CR>", opts) --Split Vertically
 keymap.set("n", "<leader>ch", ":split<CR>", opts) --Split horzonatlly
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
-keymap.set("n", "<C-d>", "<C-d>zz", opts)
-keymap.set("n", "<C-u>", "<C-u>zz", opts)
+keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half a page down centered"})
+keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half a page up centered"})
 
 -- keymap.set("n", "<leader>cm", "<cmd>MaximizerToggle<CR>", opts) --Toggle Minimise
 
