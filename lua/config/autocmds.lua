@@ -58,3 +58,8 @@ vim.api.nvim_create_autocmd("FileType", {
 --   bg = 'none', -- Example background color
 -- })
 
+-- vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
+--   callback = function()
+--     vim.wo.winbar = "%!v:lua.require'statusline'.render()"
+--   end,
+-- })

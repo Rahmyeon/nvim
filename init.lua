@@ -1,4 +1,3 @@
--- This needs to be at top of your `init.lua`
 vim.cmd([[
   syntax off
   filetype off
@@ -19,16 +18,23 @@ vim.hl = vim.highlight
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 -- vim.g.loaded_tarPlugin = 1
--- vim.g.loaded_zipPlugin = 1
+--
+--
+--.vim.g.loaded_zipPlugin = 1
 -- vim.g.loaded_tutor = 1
 -- vim.g.loaded_2html_plugin = 1
+--
+--.
 
 
 local vim = vim
 local g = vim.g
 
+
+
 g.loaded_gzip = 1
 g.loaded_zip = 1
+
 g.loaded_zipPlugin = 1
 g.loaded_tar = 1
 g.loaded_tarPlugin = 1
@@ -86,16 +92,21 @@ require("config.lazy")
 
 -- Now load nvim-colorizer
 -- disable status bar
-vim.opt.laststatus=0
+-- vim.opt.laststatus=1
 --  vim.lsp.set_log_level("debug")
 -- require'lspconfig'.jdtls.setup{ cmd = {vim.fn.stdpath('data') .. "/mason/bin/jdtls.cmd"} }
 -- require('lspconfig').jdtls.setup({})
-
+-- require("config.statusline")
 -- vim.cmd('syntax on')
 -- vim.cmd('filetype on')
 -- vim.cmd('filetype plugin indent on')
-
+-- require("config.statusline")
+-- require("config.sl")
 -- This needs to be at bottom of your `init.lua`
+--require("lua.statusline")
+require("statusline")
+
+
 vim.cmd([[
   syntax on
   filetype on

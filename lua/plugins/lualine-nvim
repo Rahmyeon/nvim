@@ -1,0 +1,89 @@
+
+-- Lualine component to show macro recording status
+-- local M = {}
+
+local function recording()
+  local reg = vim.fn.reg_recording()
+  if reg ~= "" then
+    -- Return the recording register with a REC indicator
+    return " REC @" .. reg
+  else
+    return ""
+  end
+end
+
+local function recording_component()
+  return {
+    function()
+      return recording()
+    end,
+    color = function()
+      if vim.fn.reg_recording() ~= "" then
+        return { fg = nil, bg = nil, gui = "bold" }
+      end
+    end,
+    icon = "󰑋", -- Recording icon
+    cond = function()
+      return vim.fn.reg_recording() ~= ""
+    end,
+    type = "error",
+  }
+end
+-- Configure the component with highlight groups
+-- M.config = {
+--   recording = {
+--     function()
+--       return M.recording()
+--     end,
+--     -- Use the built-in lualine highlight groups
+--     -- 'error' for recording to make it stand out
+--     color = function()
+--       local rec = vim.fn.reg_recording()
+--       if rec ~= "" then
+--         return { fg = nil, bg = nil, gui = "bold" }
+--       end
+--     end,
+--     icon = "󰑋",  -- Recording icon
+--     -- Use error highlight group when recording
+--     cond = function()
+--       local rec = vim.fn.reg_recording()
+--       return rec ~= ""
+--     end,
+--     -- Use warning highlight group for this component
+--     type = "error",
+--   }
+-- }
+--
+-- return M
+
+--local theme = require("lualine.themes.gruvbox-material")
+	--local theme = require("lualine.themes.gm_light_hard")
+-- local macro_status = require("Setup.lualine_func")
+
+return {
+	"nvim-lualine/lualine.nvim",
+  dependencies = {
+    -- { 'zaldih/themery.nvim' },
+    {'nvim-tree/nvim-web-devicons'},
+  },
+	lazy = false,
+  opts = {
+		options = {
+			theme = 'catppuccin-macchiato',
+			-- theme = 'mellow',
+			globalstatus = true,
+			component_separators = { left = "|", right = "|" },
+			section_separators = { left = "", right = "" },
+		},
+		tabline = {
+			lualine_a = { "mode" },
+      lualine_b = {'branch', 'diff', 'diagnostics'},
+      -- lualine_c = { macro_status.config.recording },
+      lualine_c = { recording_component() },
+			lualine_x = { "filename", "filetype" },
+			lualine_y = { "lsp_status" },
+			lualine_z = { "location" },
+		},
+		sections = {},
+  }
+}
