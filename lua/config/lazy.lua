@@ -97,10 +97,11 @@ debug = false,
 
 
 require("config.options")
-vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd("colorscheme vague")
 require("config.autocmds")
 require("config.keymaps")
--- require("config.statusline")
+require("config.statusline")
 -- vim.cmd('runtime! lua/keymaps/*.lua')
 
 -- Lsp directory required

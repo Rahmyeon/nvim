@@ -2,7 +2,8 @@ return {
   "nvimtools/none-ls.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "windwp/nvim-autopairs",
+    -- "windwp/nvim-autopairs",
+    'nvim-mini/mini.pairs',
     "williamboman/mason.nvim",
   },
   config = function ()

@@ -30,8 +30,6 @@ vim.hl = vim.highlight
 local vim = vim
 local g = vim.g
 
-
-
 g.loaded_gzip = 1
 g.loaded_zip = 1
 
@@ -55,7 +53,6 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
-
 -- Sets leader
 -- vim.g.mapleader = " "
 -- vim.g.maplocalleader = " "
@@ -63,6 +60,7 @@ g.loaded_netrwFileHandlers = 1
 -- Lazy Setup
 require("config.lazy")
 
+require("oil").setup()
 -- Setup directory is required
 -- vim.cmd('runtime! lua/Setup/*.lua')
 --#ffffff
@@ -103,9 +101,9 @@ require("config.lazy")
 -- require("config.statusline")
 -- require("config.sl")
 -- This needs to be at bottom of your `init.lua`
---require("lua.statusline")
-require("statusline")
-
+-- require("lua.statusline")
+-- require("statusline")
+-- require("statusline")
 
 vim.cmd([[
   syntax on

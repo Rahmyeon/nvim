@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+-- Override vim.notify to use snacks
+vim.notify = function(msg, level, opts)
+  Snacks.notifier.notify(msg, level, opts)
+end
+
 -- Tab / Indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -9,7 +14,7 @@ opt.smartindent = true
 opt.wrap = false
 
 
-opt.laststatus=0
+-- opt.laststatus=0
 -- Search
 opt.incsearch = true
 opt.ignorecase = true

@@ -109,7 +109,7 @@ return {
      preset = 'enter',
      ['<C-k>'] = {'select_prev' },
      ['<C-j>'] = { 'select_next'},
-     ['<space>'] = { 'accept', 'fallback' },
+     -- ['<space>'] = { 'accept', 'fallback' },
      ['<tab>'] = { 'accept', 'fallback' }
    },
    appearance = {

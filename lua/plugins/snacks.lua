@@ -98,5 +98,6 @@ return {
     { "<leader>u", function() Snacks.picker.undo() end, desc = "[n]ile explorer" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
     { "<leader>s:", function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader>qe", function() Snacks.notifier.hide() end, desc = "hide notifications" },
   },
 }

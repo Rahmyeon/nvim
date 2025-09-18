@@ -18,7 +18,7 @@ keymap.set('n', 'dm', ':delmarks ', opts)
 keymap.set('n', '<leader>la', ':Lazy<CR>', opts)
 keymap.set('n', '<leader>ma', ':Mason<CR>', opts)
 -- Notify.nvim
-keymap.set("n", "<leader>qe", ":Noice dismiss<CR>", opts) -- Dismiss all notifications
+-- keymap.set("n", "<leader>qe", ":Noice dismiss<CR>", opts) -- Dismiss all notifications
 
 -- Close buffer
 keymap.set("n", "<leader>qb", ":bd!<CR>", opts)
@@ -134,3 +134,11 @@ end)
 
 vim.keymap.set("n", "Y", "y$", { desc = " Yank to the end of the line"})
 vim.keymap.set({"n", "v"}, "<leader>dd", '"_d', { desc = "Delete without yanking"})
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "<leader>o", require("oil").toggle_float, { desc = "toggle oil float" })
+-- vim.keymap.set("x", "O", function ()
+--   vim.cmd([[
+--     '<,'>normal! $o
+--   ]])
+-- end, {desc = "Visual block open line below"})

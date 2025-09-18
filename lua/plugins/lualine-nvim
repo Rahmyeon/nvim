@@ -69,7 +69,7 @@ return {
 	lazy = false,
   opts = {
 		options = {
-			theme = 'catppuccin-macchiato',
+			-- theme = 'catppuccin-macchiato',
 			-- theme = 'mellow',
 			globalstatus = true,
 			component_separators = { left = "|", right = "|" },
