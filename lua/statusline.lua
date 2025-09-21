@@ -185,19 +185,25 @@ function M.lsp_component()
   for _, client in ipairs(clients) do
     table.insert(names, client.name)
   end
-  return string.format("%%#StatusLineItalic#LSP: %%#StatusLineTitle#%s", table.concat(names, " | "))
+  return string.format("%%#StatusLineItalic#LSP: %%#StatusLineTitle#%s", table.concat(names, ", "))
 end
 
 --- Position
+-- function M.position_component()
+--   local line = vim.fn.line '.'
+--   local line_count = vim.api.nvim_buf_line_count(0)
+--   local col = vim.fn.virtcol '.'
+--   return table.concat {
+--     '%#StatusLineItalic#l: ',
+--     string.format('%%#StatusLineTitle#%d', line),
+--     string.format('%%#StatusLineItalic#/%d c: %d', line_count, col),
+--   }
+-- end
+
 function M.position_component()
   local line = vim.fn.line '.'
-  local line_count = vim.api.nvim_buf_line_count(0)
   local col = vim.fn.virtcol '.'
-  return table.concat {
-    '%#StatusLineItalic#l: ',
-    string.format('%%#StatusLineTitle#%d', line),
-    string.format('%%#StatusLineItalic#/%d c: %d', line_count, col),
-  }
+  return string.format('%s%d%s:%d', '%#StatusLineTitle#', line, '%#StatusLineItalic#', col)
 end
 
 --- Renders the statusline
@@ -214,13 +220,13 @@ function M.render()
         table.insert(out, c)
       end
     end
-    return table.concat(out, ' || ')
+    return table.concat(out, '|')
   end
 
   return table.concat {
     concat_components {
       M.mode_component(),
-      M.recording_component(),
+      -- M.recording_component(),
     },
     '%#StatusLine#%=',
     concat_components {

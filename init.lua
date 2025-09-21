@@ -9,7 +9,7 @@ vim.cmd([[
 
 
 -- Higlights fix
-vim.hl = vim.highlight
+-- vim.hl = vim.highlight
 
 -- Disable built-in plugins
 -- vim.g.loaded_gzip = 1

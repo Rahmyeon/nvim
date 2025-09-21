@@ -92,12 +92,16 @@ return {
     end, desc = "[t]erminal [o]pen" },
     -- Toggle file finders
     { "<leader>f", function() Snacks.picker.explorer() end, desc = "[f]ile explorer" },
+    { "<leader>sq", function() Snacks.picker.qflist() end, desc = "[s]earch [q]uick fix list" },
     -- Search snacks picker higlight groups
-    { "<leader>ss", function() Snacks.picker.highlights({pattern = "hl_group:^Snacks"}) end, desc = "[s]earch [s]nacks highlights" },
+    { "<leader>s1", function() Snacks.picker.highlights({pattern = "hl_group:^Snacks"}) end, desc = "[s]earch [s]nacks highlights" },
+    { "<leader>ss", function() Snacks.picker.smart() end, desc = "[s]earch [s]mart" },
     -- Check undodir
     { "<leader>u", function() Snacks.picker.undo() end, desc = "[n]ile explorer" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
     { "<leader>s:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>qe", function() Snacks.notifier.hide() end, desc = "hide notifications" },
+    { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
   },
 }

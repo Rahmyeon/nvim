@@ -96,18 +96,15 @@ debug = false,
 
 
 
-require("config.options")
 -- vim.cmd.colorscheme("catppuccin-macchiato")
+require("config.options")
 vim.cmd("colorscheme vague")
 require("config.autocmds")
 require("config.keymaps")
 require("config.statusline")
--- vim.cmd('runtime! lua/keymaps/*.lua')
-
--- Lsp directory required
--- vim.cmd('runtime! lua/lsp/*.lua')
 require("lsp")
-
+require('mini.surround').setup()
+require('mini.pairs').setup()
 
 -- local opts = {
 -- 	defaults = { true },

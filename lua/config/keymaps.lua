@@ -98,25 +98,25 @@ keymap.set('n', 'dm', ':delmarks ', opts)
 -- Save this as 'lua/marks.lua' in your Neovim config directory
 -- Then add this to your init.lua or other config file:
 
- keymap.set('n', 'm,', ':lua require("Setup.marks").set_next_mark()<CR>', { noremap = true, silent = true, desc = "Set next available mark" })
+ -- keymap.set('n', 'm,', ':lua require("Setup.marks").set_next_mark()<CR>', { noremap = true, silent = true, desc = "Set next available mark" })
 
 -- Toggle the next available mark at the current line
- keymap.set('n', 'm;', ':lua require("Setup.marks").toggle_mark()<CR>', { noremap = true, silent = true, desc = "Toggle next available mark" })
+ -- keymap.set('n', 'm;', ':lua require("Setup.marks").toggle_mark()<CR>', { noremap = true, silent = true, desc = "Toggle next available mark" })
 
 -- Delete all marks on the current line
- keymap.set('n', 'dm-', ':delmarks!<CR>', { noremap = true, silent = true, desc = "Delete all marks on current line" })
+ -- keymap.set('n', 'dm-', ':delmarks!<CR>', { noremap = true, silent = true, desc = "Delete all marks on current line" })
 
 -- Delete all marks in the current buffer
- keymap.set('n', 'dm<space>', ':delmarks a-zA-Z0-9<CR>', { noremap = true, silent = true, desc = "Delete all marks in current buffer" })
+ -- keymap.set('n', 'dm<space>', ':delmarks a-zA-Z0-9<CR>', { noremap = true, silent = true, desc = "Delete all marks in current buffer" })
 
 -- Move to next mark
- keymap.set('n', 'm]', ':lua require("Setup.marks").next_mark()<CR>', { noremap = true, silent = true, desc = "Move to next mark" })
+ -- keymap.set('n', 'm]', ':lua require("Setup.marks").next_mark()<CR>', { noremap = true, silent = true, desc = "Move to next mark" })
 
 -- Move to previous mark
- keymap.set('n', 'm[', ':lua require("Setup.marks").prev_mark()<CR>', { noremap = true, silent = true, desc = "Move to previous mark" })
+ -- keymap.set('n', 'm[', ':lua require("Setup.marks").prev_mark()<CR>', { noremap = true, silent = true, desc = "Move to previous mark" })
 
 -- Preview mark
- keymap.set('n', 'm:', ':lua require("Setup.marks").preview_mark()<CR>', { noremap = true, silent = true, desc = "Preview mark" })
+ -- keymap.set('n', 'm:', ':lua require("Setup.marks").preview_mark()<CR>', { noremap = true, silent = true, desc = "Preview mark" })
 
 vim.keymap.set("n", "<leader>dt", function()
    if vim.diagnostic.is_enabled() then

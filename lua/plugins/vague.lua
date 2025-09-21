@@ -52,8 +52,15 @@ return {
       highlights["SnacksDashboardHeader"] = { fg = "#cb9595" }
       highlights["snacksdashboardDesc"] = { fg = "#cdcdcd" }
       highlights["snacksdashboardIcon"] = { fg = "#cdcdcd" }
-
-      colors.error = "#cb9595"
+      highlights["markdownH1"] = { fg = "#cb9595"}
+      highlights["markdownH2"] = { fg = "#e1bc92"}
+      highlights["markdownH3"] = { fg = "#6e93b1"}
+      
+      highlights["markdownH1Delimeter"] = { fg = "#cb9595"}
+      highlights["markdownH2Delimeter"] = { fg = "#e1bc92"}
+      highlights["markdownH3Delimeter"] = { fg = "#6e93b1"}
+      
+      colors.error = "#cb9595" 
       colors.bg = "#0f0d0e"
       colors.string = "#b7d6b7"
       colors.inactiveBg = "#1c1c24"
@@ -90,7 +97,7 @@ return {
       highlights.StatusLineWarning = { fg = colors.warning }
       highlights.StatusLineHint    = { fg = colors.hint }
       highlights.StatusLineSpinner = { fg = colors.delta }
-      end,
+    end,
     -- optional configuration here
   }
 }
