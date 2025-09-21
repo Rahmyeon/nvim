@@ -6,6 +6,7 @@ return {
     'nvim-mini/mini.pairs',
     "williamboman/mason.nvim",
   },
+  event = "VeryLazy",
   config = function ()
     local null_ls = require("null-ls")
     null_ls.setup({
