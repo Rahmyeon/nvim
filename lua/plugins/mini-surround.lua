@@ -2,5 +2,5 @@ return {
   'nvim-mini/mini.surround',
   version = '*',
   opts = {},
-  lazy = false
+  -- lazy = false
 }

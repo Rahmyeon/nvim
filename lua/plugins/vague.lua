@@ -80,14 +80,14 @@ return {
       highlights.StatusLineNC = { fg = colors.comment, bg = colors.inactiveBg }
 
       highlights.StatusLineModeNormal   = { fg = colors.bg, bg = colors.keyword, bold = true }
-      highlights.StatusLineModeInsert   = { fg = colors.bg, bg = colors.func, bold = true }
-      highlights.StatusLineModeVisual   = { fg = colors.bg, bg = colors.string, bold = true }
+      highlights.StatusLineModeInsert   = { fg = colors.bg, bg = colors.string, bold = true }
+      highlights.StatusLineModeVisual   = { fg = colors.bg, bg = "#bb9dbd", bold = true }
       highlights.StatusLineModeCommand  = { fg = colors.bg, bg = colors.number, bold = true }
       highlights.StatusLineModeOther    = { fg = colors.bg, bg = colors.comment, bold = true }
 
       highlights.StatusLineModeSeparatorNormal   = { fg = colors.keyword, bg = colors.bg }
-      highlights.StatusLineModeSeparatorInsert   = { fg = colors.func, bg = colors.bg }
-      highlights.StatusLineModeSeparatorVisual   = { fg = colors.string, bg = colors.bg }
+      highlights.StatusLineModeSeparatorInsert   = { fg = colors.string, bg = colors.bg }
+      highlights.StatusLineModeSeparatorVisual   = { fg = "#bb9dbd", bg = colors.bg }
       highlights.StatusLineModeSeparatorCommand  = { fg = colors.number, bg = colors.bg }
       highlights.StatusLineModeSeparatorOther    = { fg = colors.comment, bg = colors.bg }
 

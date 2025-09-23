@@ -102,7 +102,7 @@ require("oil").setup()
 -- require("config.sl")
 -- This needs to be at bottom of your `init.lua`
 -- require("lua.statusline")
--- require("statusline")
+require("statusline")
 -- require("statusline")
 
 vim.cmd([[

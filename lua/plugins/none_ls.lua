@@ -3,10 +3,10 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- "windwp/nvim-autopairs",
-    'nvim-mini/mini.pairs',
+    -- 'nvim-mini/mini.pairs',
     "williamboman/mason.nvim",
   },
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   config = function ()
     local null_ls = require("null-ls")
     null_ls.setup({

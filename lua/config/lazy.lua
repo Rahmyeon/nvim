@@ -101,10 +101,11 @@ require("config.options")
 vim.cmd("colorscheme vague")
 require("config.autocmds")
 require("config.keymaps")
-require("config.statusline")
+-- require("config.statusline")
 require("lsp")
 require('mini.surround').setup()
 require('mini.pairs').setup()
+-- require('colorizer').setup()
 
 -- local opts = {
 -- 	defaults = { true },
