@@ -113,7 +113,7 @@ function M.filetype_component()
     filetype = '[No Name]'
   end
   local buf_name = vim.api.nvim_buf_get_name(0)
-  local name, ext = vim.fn.fnamemodify(buf_name, ':t'), vim.fn.fnamemodify(buf_name, ':e')
+  local name = vim.fn.fnamemodify(buf_name, ':t')
   -- local icon, icon_hl = devicons.get_icon(name, ext)
   local icon, icon_hl = devicons.get("file", name)
   if not icon then
