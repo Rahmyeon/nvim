@@ -7,14 +7,14 @@ return {
     terminal = {
       shell = {"pwsh.exe", "-nologo"},
     },
-    scroll = { enabled = false },
+    -- scroll = { enabled = false },
     indent = {
       animate = {
         enabled = false,
       }
     },
     quickfile = {enabled = true},
-    gitbrowse = {enabled = true},
+    -- gitbrowse = {enabled = true},
     dashboard = {
       preset = {
         header = [[
@@ -30,7 +30,7 @@ return {
     notifier = {enabled = true},
     notify = { enabled = true },
     statuscolumn = {enabled = true },
-    words = {enabled = false},
+    words = {enabled = true},
     picker = {
       layout = {
         preset = "default"

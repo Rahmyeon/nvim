@@ -1,6 +1,6 @@
 return { "catppuccin/nvim",
   name = "catppuccin",
-  lazy = false,
+  lazy = true,
   priority = 1001,
   opts = {
     integrations = {
@@ -28,7 +28,28 @@ return { "catppuccin/nvim",
           ["@markup.quote.markdown"] = { fg = macchiato.text, bold = false },
           SnacksPickerBox = { bg = "none" }, -- Added subtle bg
           VoidFloatTerm = { fg = macchiato.blue },
-          SagaLightBulb = { fg = macchiato.yellow }
+          SagaLightBulb = { fg = macchiato.yellow },
+
+          StatusLineModeNormal   = { fg = macchiato.base, bg = macchiato.blue, bold = true },
+          StatusLineModeInsert   = { fg = macchiato.base, bg = macchiato.green, bold = true },
+          StatusLineModeVisual   = { fg = macchiato.base, bg = macchiato.mauve, bold = true },
+          StatusLineModeCommand  = { fg = macchiato.base, bg = macchiato.peach, bold = true },
+          StatusLineModeOther    = { fg = macchiato.base, bg = macchiato.overlay0, bold = true },
+
+          -- Separators
+          StatusLineModeSeparatorNormal   = { fg = macchiato.blue, bg = macchiato.base },
+          StatusLineModeSeparatorInsert   = { fg = macchiato.green, bg = macchiato.base },
+          StatusLineModeSeparatorVisual   = { fg = macchiato.mauve, bg = macchiato.base },
+          StatusLineModeSeparatorCommand  = { fg = macchiato.peach, bg = macchiato.base },
+          StatusLineModeSeparatorOther    = { fg = macchiato.overlay0, bg = macchiato.base },
+
+          -- Extras
+          StatusLineTitle   = { fg = macchiato.text, bold = true },
+          StatusLineItalic  = { fg = macchiato.overlay0, italic = true },
+          StatusLineError   = { fg = macchiato.red, bold = true },
+          StatusLineWarning = { fg = macchiato.yellow },
+          StatusLineHint    = { fg = macchiato.teal },
+          StatusLineSpinner = { fg = macchiato.sky },
         }
       end
     }

@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-  lazy = false,
+  lazy = vim.fn.argc(-1) == 0,
+  event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
   opts = {
 		indent = {
 			enable = true,

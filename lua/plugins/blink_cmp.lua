@@ -12,12 +12,13 @@ return {
     --   },
     -- },
     {'rafamadriz/friendly-snippets'},
-    { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    { 'L3MON4D3/LuaSnip', version = 'v2.*', lazy = true },
   },
   opts_extend = {
     "sources.default",
     "sources.completion.enabled_providers"
   },
+  event = { "InsertEnter", "CmdlineEnter"},
   -- ---@module 'blink.cmp'
   -- ---@type blink.cmp.Config
   opts = {

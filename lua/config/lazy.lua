@@ -96,11 +96,12 @@ debug = false,
 
 
 
--- vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme("catppuccin-macchiato")
 require("config.options")
-vim.cmd("colorscheme vague")
+-- vim.cmd("colorscheme vague")
 require("config.autocmds")
 require("config.keymaps")
+-- require("util.LazyFile")
 -- require("config.statusline")
 require("lsp")
 require('mini.surround').setup()
