@@ -60,7 +60,6 @@ g.loaded_netrwFileHandlers = 1
 -- Lazy Setup
 require("config.lazy")
 
-require("oil").setup()
 -- Setup directory is required
 -- vim.cmd('runtime! lua/Setup/*.lua')
 --#ffffff
@@ -102,7 +101,7 @@ require("oil").setup()
 -- require("config.sl")
 -- This needs to be at bottom of your `init.lua`
 -- require("lua.statusline")
-require("statusline")
+-- require("statusline")
 -- require("statusline")
 
 vim.cmd([[

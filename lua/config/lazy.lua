@@ -104,9 +104,11 @@ require("config.keymaps")
 -- require("util.LazyFile")
 -- require("config.statusline")
 require("lsp")
+require("oil").setup()
 require('mini.surround').setup()
 require('mini.pairs').setup()
 -- require('colorizer').setup()
+require("statusline")
 
 -- local opts = {
 -- 	defaults = { true },
