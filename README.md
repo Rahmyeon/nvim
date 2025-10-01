@@ -3,7 +3,7 @@
 - switched to oil.nvim
 - jdtls may not work
 - Hopefully you find something useful
-1+3
+
 ## Directory structure
 ```
  nvim/
@@ -44,8 +44,10 @@
  │   │   ├── snacks.lua
  │   │   └── which-key.lua
  │   │   
- │   └── util/
- │       ├── icons.lua
- │       ├── lsp.lua
- │       └── util.lua
+ │   ├──  util/
+ │   │   ├── icons.lua
+ │   │   ├── lsp.lua
+ │   │   └── util.lua
+ │   │
+ │   └── statusline.lua
  ```
