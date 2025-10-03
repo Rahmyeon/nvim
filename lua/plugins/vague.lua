@@ -6,6 +6,7 @@ return {
   opts = {
     on_highlights = function(highlights, colors)
       highlights["@keyword.return"] = { fg = "#cb9595", bold = true, italic = true } -- brightened
+      highlights["Statement"] = { fg = "#cb9595", bold = true, italic = true } -- brightened
       highlights["@keyword.variable"] = { fg = "#cdcdcd", bold = false, italic = true } -- brightened
       highlights["@lsp.type.variable"] = { fg = "#cdcdcd", bold = false, italic = true } -- brightened
       highlights["@lsp.type.method"] = { fg = "#bb9dbd", bold = false, italic = true } -- brightened
@@ -34,6 +35,7 @@ return {
       highlights["@lsp.type.modifier"] = { fg = "#bb9dbd", bold = false, italic = true } -- brightened
       -- highlights["@lsp.type.class"] = { fg = "#b7d6b7", bold = false, italic = true } -- brightened
       highlights["@lsp.type.class"] = { fg = "#d6c4b7", bold = false, italic = true } -- brightened
+      highlights["SpecialChar"] = { fg = "#d6c4b7", bold = false, italic = true } -- brightened
       highlights["@lsp.type.parameter"] = { fg = "#cb9595", bold = false, italic = true } -- brightened
 
       highlights["@keyword.hints"] = { fg = "#90a0b5", bold = false, italic = true } -- brightened
@@ -49,7 +51,7 @@ return {
       highlights["@constant"] = { fg = "#e1bc92", bold = true } -- brightened
       highlights["@constructor.lua"] = { fg = "#cdcdcd" } -- brightened
       -- highlights["SnacksDashboardTitle"] = { fg = "#cb9595" }
-      highlights["SnacksDashboardHeader"] = { fg = "#cb9595" }
+      highlights["SnacksDashboardHeader"] = { fg = "#6e94b2" }
       highlights["snacksdashboardDesc"] = { fg = "#cdcdcd" }
       highlights["snacksdashboardIcon"] = { fg = "#cdcdcd" }
       highlights["markdownH1"] = { fg = "#cb9595"}

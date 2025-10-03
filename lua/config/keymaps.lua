@@ -14,7 +14,19 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Map 'dm' followed by any character to delete that mark
-keymap.set('n', 'dm', ':delmarks ', opts)
+-- keymap.set('n', 'dm', ':delmarks ', opts)
+
+for i = string.byte('a'), string.byte('z') do
+	local letter = string.char(i)
+	vim.keymap.set('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
+end
+
+
+for i = string.byte('A'), string.byte('Z') do
+	local letter = string.char(i)
+	vim.keymap.set('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
+end
+
 keymap.set('n', '<leader>la', ':Lazy<CR>', opts)
 keymap.set('n', '<leader>ma', ':Mason<CR>', opts)
 -- Notify.nvim
@@ -137,6 +149,30 @@ vim.keymap.set({"n", "v"}, "<leader>dd", '"_d', { desc = "Delete without yanking
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>o", require("oil").toggle_float, { desc = "toggle oil float" })
+
+vim.keymap.set("n", "<C-q>", ":copen<CR>", { silent = true })
+for i = 1, 9 do
+	vim.keymap.set('n', '<leader>' .. i, ':cc ' .. i .. '<CR>', { noremap = true, silent = true })
+end
+vim.keymap.set("n", "<leader>a",
+	function() vim.fn.setqflist({ { filename = vim.fn.expand("%"), lnum = 1, col = 1, text = vim.fn.expand("%"), } }, "a") end,
+	{ desc = "Add current file to QuickFix" })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	pattern = "*",
+	group = vim.api.nvim_create_augroup("qf", { clear = true }),
+	callback = function()
+		if vim.bo.buftype == "quickfix" then
+			vim.keymap.set("n", "<C-q>", ":ccl<cr>", { buffer = true, silent = true })
+			vim.keymap.set("n", "dd", function()
+				local idx = vim.fn.line('.')
+				local qflist = vim.fn.getqflist()
+				table.remove(qflist, idx)
+				vim.fn.setqflist(qflist, 'r')
+			end, { buffer = true })
+		end
+	end,
+})
 -- vim.keymap.set("x", "O", function ()
 --   vim.cmd([[
 --     '<,'>normal! $o

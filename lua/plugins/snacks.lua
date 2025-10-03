@@ -94,7 +94,7 @@ return {
     { "<leader>f", function() Snacks.picker.explorer() end, desc = "[f]ile explorer" },
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "[s]earch [q]uick fix list" },
     -- Search snacks picker higlight groups
-    { "<leader>s1", function() Snacks.picker.highlights({pattern = "hl_group:^Snacks"}) end, desc = "[s]earch [s]nacks highlights" },
+    { "<leader>s1", function() Snacks.picker.highlights({pattern = "hl_group:^Snacks"}) end, desc = "[s]earch [1] snacks highlights" },
     { "<leader>ss", function() Snacks.picker.smart() end, desc = "[s]earch [s]mart" },
     -- Check undodir
     { "<leader>u", function() Snacks.picker.undo() end, desc = "[n]ile explorer" },

@@ -31,12 +31,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
 
-
--- require("lazy").setup("plugins")
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -69,80 +64,15 @@ debug = false,
 	-- install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 })
-
--- require("lazy").setup({
---   { import = "plugins" },
---   	performance = {
--- 		cache = {
--- 			enabled = true,
--- 		},
--- 		rtp = {
--- 			disabled_plugins = {
--- 				"matchit",
--- 				"matchparen",
--- 				"netrwPlugin",
--- 				"gzip",
--- 				"tarPlugin",
--- 				"tohtml",
--- 				"tutor",
--- 				"zipPlugin",
--- 			},
--- 		},
--- 	},
--- 	debug = false,
--- })
-
-
-
-
-
-vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd("colorscheme vague")
 require("config.options")
--- vim.cmd("colorscheme vague")
 require("config.autocmds")
 require("config.keymaps")
--- require("util.LazyFile")
--- require("config.statusline")
 require("lsp")
 require("oil").setup()
 require('mini.surround').setup()
 require('mini.pairs').setup()
 -- require('colorizer').setup()
 require("statusline")
-
--- local opts = {
--- 	defaults = { true },
--- 	install = {
--- 		colorscheme = { "themery.nvim" },
--- 	},
--- 	rtp = {
--- 		disabled_plugins = {
--- 			"gzip",
--- 			"matchit",
--- 			"matchparen",
--- 			"newtrw",
--- 			"newtrwPlugin",
--- 			"tarPlugin",
--- 			"zipPlugin",
--- 		},
--- 	},
--- 	change_detection = {
--- 		notify = true,
--- 	},
--- }
-
--- require("nvim-tree").setup({
--- 	sort = {
--- 		sorter = "case_sensitive",
--- 	},
--- 	view = {
--- 		width = 30,
--- 	},
--- 	renderer = {
--- 		group_empty = true,
--- 	},
--- 	filters = {
--- 		dotfiles = true,
--- 	},
--- })
 
