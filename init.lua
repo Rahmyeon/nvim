@@ -3,29 +3,6 @@ vim.cmd([[
   filetype off
   filetype plugin indent off
 ]])
--- vim.cmd('syntax off')
--- vim.cmd('filetype off')
--- vim.cmd('filetype plugin indent off')
-
-
--- Higlights fix
--- vim.hl = vim.highlight
-
--- Disable built-in plugins
--- vim.g.loaded_gzip = 1
--- vim.g.loaded_matchit = 1
--- vim.g.loaded_matchparen = 1
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- vim.g.loaded_tarPlugin = 1
---
---
---.vim.g.loaded_zipPlugin = 1
--- vim.g.loaded_tutor = 1
--- vim.g.loaded_2html_plugin = 1
---
---.
-
 
 local vim = vim
 local g = vim.g
@@ -53,56 +30,10 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
--- Sets leader
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
-
 -- Lazy Setup
 require("config.lazy")
 
--- Setup directory is required
--- vim.cmd('runtime! lua/Setup/*.lua')
---#ffffff
--- Keymaps directory required
--- vim.cmd('runtime! lua/keymaps/*.lua')
--- 
--- -- Lsp directory required
--- vim.cmd('runtime! lua/lsp/*.lua')
-
--- vim.cmd.colorscheme("catppuccin-macchiato")
--- vim.cmd.colorscheme("mellow")
--- Example config in lua
-
--- Configure the appearance
--- vim.g.mellow_italic_functions = true
--- vim.g.mellow_bold_functions = true
--- 
--- vim.g.mellow_highlight_overrides = {
---   ["@keyword.return"] = { fg = "#d4849d", bold = true, italic = true }, -- Brightened
--- }
-
-
--- require('colorizer').setup()
-
--- require('-- require('colorizer').setup()|set nopaste').setup()
--- Enable true color support
-
--- Now load nvim-colorizer
--- disable status bar
--- vim.opt.laststatus=1
---  vim.lsp.set_log_level("debug")
--- require'lspconfig'.jdtls.setup{ cmd = {vim.fn.stdpath('data') .. "/mason/bin/jdtls.cmd"} }
--- require('lspconfig').jdtls.setup({})
--- require("config.statusline")
--- vim.cmd('syntax on')
--- vim.cmd('filetype on')
--- vim.cmd('filetype plugin indent on')
--- require("config.statusline")
--- require("config.sl")
--- This needs to be at bottom of your `init.lua`
--- require("lua.statusline")
--- require("statusline")
--- require("statusline")
+require('colorizer').setup()
 
 vim.cmd([[
   syntax on

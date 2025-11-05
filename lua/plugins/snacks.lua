@@ -53,6 +53,8 @@ return {
     { "<leader>sz", function() Snacks.picker.zoxide() end, desc = "[s]earch [z]oxide" },
     -- Search journal
     { "<leader>sj", function() Snacks.picker.files({ cwd = vim.fn.expand("$HOME") .. "/journal" }) end, desc = "[s]earch [J]ournal" },
+    -- Search .config
+    { "<leader>s.", function() Snacks.picker.files({ cwd = vim.fn.expand("$HOME") .. "/.config" }) end, desc = "[s]earch [.]config" },
     -- Search Help
     { "<leader>sh", function() Snacks.picker.help() end, desc = "[s]earch [h]elp" },
     -- Search config

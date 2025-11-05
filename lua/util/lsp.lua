@@ -1,4 +1,5 @@
-local keymap = vim.keymap
+-- local keymap = vim.keymap
+local map = vim.keymap.set
 local M = {}
 
 M.on_attach = function(client, bufnr)
@@ -21,7 +22,7 @@ M.on_attach = function(client, bufnr)
 
   -- keymap.set("n", "<leader>lo", "<cmd>LSoutLinToggle<CR>", opts) -- see outline for right hand side
   if client.name == "pyright" then
-    keymap.set("n", "<leader>oi", "<cmd>PyrightOrganizeImports<CR>", opts)
+    map("n", "<leader>oi", "<cmd>PyrightOrganizeImports<CR>", opts)
     end
   end
 

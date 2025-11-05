@@ -4,6 +4,7 @@ return {
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- make sure to load this before all the other plugins
   opts = {
+    transparent = true,
     on_highlights = function(highlights, colors)
       highlights["@keyword.return"] = { fg = "#cb9595", bold = true, italic = true } -- brightened
       highlights["Statement"] = { fg = "#cb9595", bold = true, italic = true } -- brightened
@@ -61,6 +62,9 @@ return {
       highlights["markdownH1Delimeter"] = { fg = "#cb9595"}
       highlights["markdownH2Delimeter"] = { fg = "#e1bc92"}
       highlights["markdownH3Delimeter"] = { fg = "#6e93b1"}
+      highlights["BlinkCmpMenuBorder"] = {  bg = "none" }
+      highlights["BlinkCmpDocumentationBorder"] = {  bg = "none" }
+      highlights["BlinkCmpMenu"] = { bg = "none" }
       
       colors.error = "#cb9595" 
       colors.bg = "#0f0d0e"

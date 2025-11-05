@@ -9,7 +9,8 @@ end
 -- vim.lsp.buf.hover() and any other windows like this one should have the border that you choosed above
 
 
-local keymap = vim.keymap
+-- local keymap = vim.keymap
+local map = vim.keymap.set
 
 local opts = { noremap = true, silent = true }
 
@@ -18,119 +19,123 @@ local opts = { noremap = true, silent = true }
 
 for i = string.byte('a'), string.byte('z') do
 	local letter = string.char(i)
-	vim.keymap.set('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
+	map('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
 end
 
 
 for i = string.byte('A'), string.byte('Z') do
 	local letter = string.char(i)
-	vim.keymap.set('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
+	map('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
 end
 
-keymap.set('n', '<leader>la', ':Lazy<CR>', opts)
-keymap.set('n', '<leader>ma', ':Mason<CR>', opts)
+map({ "n", "v", "x" }, ";", ":", { desc = "Self explanatory" })
+map({ "n", "v", "x" }, ":", ";", { desc = "Self explanatory" })
+map({ "n", "v", "x" }, "<C-s>", [[:s/\V]], { desc = "Enter substitue mode in selection" })
+
+map('n', '<leader>la', ':Lazy<CR>', opts)
+map('n', '<leader>ma', ':Mason<CR>', opts)
 -- Notify.nvim
--- keymap.set("n", "<leader>qe", ":Noice dismiss<CR>", opts) -- Dismiss all notifications
+-- map("n", "<leader>qe", ":Noice dismiss<CR>", opts) -- Dismiss all notifications
 
 -- Close buffer
-keymap.set("n", "<leader>qb", ":bd!<CR>", opts)
+map("n", "<leader>qb", ":bd!<CR>", opts)
 
 -- Save file
-keymap.set("n", "<leader>wf", ":w<CR>", { noremap = true, silent = false })
-keymap.set("n", "<leader>ww", ":noa w<CR>", { noremap = true, silent = false })
+map("n", "<leader>wf", ":w<CR>", { noremap = true, silent = false })
+map("n", "<leader>ww", ":noa w<CR>", { noremap = true, silent = false })
 
 -- Remove highlights
-keymap.set("n", "<leader>no", ":noh<CR>", { noremap = true, silent = false })
+map("n", "<leader>no", ":noh<CR>", { noremap = true, silent = false })
 
 
 -- Directory Navigation
--- keymap.set("n", "<leader>n", ":NvimTreeFocus<CR>", opts)
--- keymap.set("n", "<leader>f", ":NvimTreeToggle<CR>", opts)
+-- map("n", "<leader>n", ":NvimTreeFocus<CR>", opts)
+-- map("n", "<leader>f", ":NvimTreeToggle<CR>", opts)
 
 --Pane navigation
--- keymap.set("n", "<C-h>", "<C-w>h", opts) -- Navigate left
--- keymap.set("n", "<C-j>", "<C-w>j", opts) -- Navigate Down
--- keymap.set("n", "<C-k>", "<C-w>k", opts) -- Navigate up
--- keymap.set("n", "<C-l>", "<C-w>l", opts) -- Naviage right
+-- map("n", "<C-h>", "<C-w>h", opts) -- Navigate left
+-- map("n", "<C-j>", "<C-w>j", opts) -- Navigate Down
+-- map("n", "<C-k>", "<C-w>k", opts) -- Navigate up
+-- map("n", "<C-l>", "<C-w>l", opts) -- Naviage right
 
 
 
 
 -- Create a function to toggle window zoom
-keymap.set("n", "<leader>cv", ":vsplit<CR>", opts) --Split Vertically
-keymap.set("n", "<leader>ch", ":split<CR>", opts) --Split horzonatlly
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
-keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half a page down centered"})
-keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half a page up centered"})
+map("n", "<leader>cv", ":vsplit<CR>", opts) --Split Vertically
+map("n", "<leader>ch", ":split<CR>", opts) --Split horzonatlly
+map("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+map("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Half a page down centered"})
+map("n", "<C-u>", "<C-u>zz", { desc = "Half a page up centered"})
 
--- keymap.set("n", "<leader>cm", "<cmd>MaximizerToggle<CR>", opts) --Toggle Minimise
+-- map("n", "<leader>cm", "<cmd>MaximizerToggle<CR>", opts) --Toggle Minimise
 
 -- UFO keymaps
--- keymap.set("n", "zR", require("ufo").openAllFolds)
--- keymap.set("n", "zM", require("ufo").closeAllFolds)
+-- map("n", "zR", require("ufo").openAllFolds)
+-- map("n", "zM", require("ufo").closeAllFolds)
 
 -- Check notifications
--- keymap.set("n", "<leader>cn", function() Snacks.notifier.show_history()end, { desc = "[c]heck [n]otifications"})
+-- map("n", "<leader>cn", function() Snacks.notifier.show_history()end, { desc = "[c]heck [n]otifications"})
 
--- keymap.set("n", "<leader>u", require("undotree").toggle, { noremap = true, silent = true, desc = "toggle [U]ndotree" }) --toggle undotree
+-- map("n", "<leader>u", require("undotree").toggle, { noremap = true, silent = true, desc = "toggle [U]ndotree" }) --toggle undotree
 
 -- Themery stuff
--- keymap.set("n", "<leader>tt", ":Themery<CR>", opts) --Themery
+-- map("n", "<leader>tt", ":Themery<CR>", opts) --Themery
 
 --Toggle for transparency
--- keymap.set("n", "<leader>te", ":TransparentToggle<CR>", opts) -- Toggle transparency
+-- map("n", "<leader>te", ":TransparentToggle<CR>", opts) -- Toggle transparency
 
 -- Key maps for extended menu plugin
 -- Keyboard users
-keymap.set("n", "K", vim.lsp.buf.hover, {})
-keymap.set("n", "gd", vim.lsp.buf.definition, {})
-keymap.set("n", "gr", vim.lsp.buf.references, {})
+map("n", "K", vim.lsp.buf.hover, {})
+map("n", "gd", vim.lsp.buf.definition, {})
+map("n", "gr", vim.lsp.buf.references, {})
 
 
-keymap.set("n", "]g", function()
+map("n", "]g", function()
   vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to next diagnostic" })
 
-keymap.set("n", "[g", function()
+map("n", "[g", function()
   vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Go to previous diagnostic" })
 
 
-keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-keymap.set('n', '<leader>dq', ':copen<CR>', { noremap = true, silent = true })
-keymap.set('n', '<leader>dq', ':cclose<CR>', { noremap = true, silent = true })
+map("n", "<leader>ca", vim.lsp.buf.code_action, {})
+map('n', '<leader>dq', ':copen<CR>', { noremap = true, silent = true })
+map('n', '<leader>dq', ':cclose<CR>', { noremap = true, silent = true })
 
 
 
-keymap.set('n', 'dm', ':delmarks ', opts)
--- keymap.set('n', 'R', '\"_ci', opts)
+-- map('n', 'dm', ':delmarks ', opts)
+-- map('n', 'R', '\"_ci', opts)
 -- Set the next available alphabetical (lowercase) mark
 --
 -- Save this as 'lua/marks.lua' in your Neovim config directory
 -- Then add this to your init.lua or other config file:
 
- -- keymap.set('n', 'm,', ':lua require("Setup.marks").set_next_mark()<CR>', { noremap = true, silent = true, desc = "Set next available mark" })
+ -- map('n', 'm,', ':lua require("Setup.marks").set_next_mark()<CR>', { noremap = true, silent = true, desc = "Set next available mark" })
 
 -- Toggle the next available mark at the current line
- -- keymap.set('n', 'm;', ':lua require("Setup.marks").toggle_mark()<CR>', { noremap = true, silent = true, desc = "Toggle next available mark" })
+ -- map('n', 'm;', ':lua require("Setup.marks").toggle_mark()<CR>', { noremap = true, silent = true, desc = "Toggle next available mark" })
 
 -- Delete all marks on the current line
- -- keymap.set('n', 'dm-', ':delmarks!<CR>', { noremap = true, silent = true, desc = "Delete all marks on current line" })
+ -- map('n', 'dm-', ':delmarks!<CR>', { noremap = true, silent = true, desc = "Delete all marks on current line" })
 
 -- Delete all marks in the current buffer
- -- keymap.set('n', 'dm<space>', ':delmarks a-zA-Z0-9<CR>', { noremap = true, silent = true, desc = "Delete all marks in current buffer" })
+ -- map('n', 'dm<space>', ':delmarks a-zA-Z0-9<CR>', { noremap = true, silent = true, desc = "Delete all marks in current buffer" })
 
 -- Move to next mark
- -- keymap.set('n', 'm]', ':lua require("Setup.marks").next_mark()<CR>', { noremap = true, silent = true, desc = "Move to next mark" })
+ -- map('n', 'm]', ':lua require("Setup.marks").next_mark()<CR>', { noremap = true, silent = true, desc = "Move to next mark" })
 
 -- Move to previous mark
- -- keymap.set('n', 'm[', ':lua require("Setup.marks").prev_mark()<CR>', { noremap = true, silent = true, desc = "Move to previous mark" })
+ -- map('n', 'm[', ':lua require("Setup.marks").prev_mark()<CR>', { noremap = true, silent = true, desc = "Move to previous mark" })
 
 -- Preview mark
- -- keymap.set('n', 'm:', ':lua require("Setup.marks").preview_mark()<CR>', { noremap = true, silent = true, desc = "Preview mark" })
+ -- map('n', 'm:', ':lua require("Setup.marks").preview_mark()<CR>', { noremap = true, silent = true, desc = "Preview mark" })
 
-vim.keymap.set("n", "<leader>dt", function()
+map("n", "<leader>dt", function()
    if vim.diagnostic.is_enabled() then
      vim.diagnostic.enable(false)
    else
@@ -138,23 +143,25 @@ vim.keymap.set("n", "<leader>dt", function()
    end
 end)
 
-vim.keymap.set("n", "<leader>pa", function()
+map("n", "<leader>pa", function()
 	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
 	print("file:", path)
 end)
 
-vim.keymap.set("n", "Y", "y$", { desc = " Yank to the end of the line"})
-vim.keymap.set({"n", "v"}, "<leader>dd", '"_d', { desc = "Delete without yanking"})
+map({ "n" }, "<C-f>", "<Cmd>Open .<CR>", { desc = "Open current directory in Finder." })
 
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "<leader>o", require("oil").toggle_float, { desc = "toggle oil float" })
+map("n", "Y", "y$", { desc = " Yank to the end of the line"})
+map({"n", "v"}, "<leader>dd", '"_d', { desc = "Delete without yanking"})
 
-vim.keymap.set("n", "<C-q>", ":copen<CR>", { silent = true })
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+map("n", "<leader>o", require("oil").toggle_float, { desc = "toggle oil float" })
+
+map("n", "<C-q>", ":copen<CR>", { silent = true })
 for i = 1, 9 do
-	vim.keymap.set('n', '<leader>' .. i, ':cc ' .. i .. '<CR>', { noremap = true, silent = true })
+	map('n', '<leader>' .. i, ':cc ' .. i .. '<CR>', { noremap = true, silent = true })
 end
-vim.keymap.set("n", "<leader>a",
+map("n", "<leader>a",
 	function() vim.fn.setqflist({ { filename = vim.fn.expand("%"), lnum = 1, col = 1, text = vim.fn.expand("%"), } }, "a") end,
 	{ desc = "Add current file to QuickFix" })
 
@@ -163,8 +170,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	group = vim.api.nvim_create_augroup("qf", { clear = true }),
 	callback = function()
 		if vim.bo.buftype == "quickfix" then
-			vim.keymap.set("n", "<C-q>", ":ccl<cr>", { buffer = true, silent = true })
-			vim.keymap.set("n", "dd", function()
+			map("n", "<C-q>", ":ccl<cr>", { buffer = true, silent = true })
+			map("n", "dd", function()
 				local idx = vim.fn.line('.')
 				local qflist = vim.fn.getqflist()
 				table.remove(qflist, idx)
@@ -173,7 +180,11 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 		end
 	end,
 })
--- vim.keymap.set("x", "O", function ()
+
+
+
+
+-- map("x", "O", function ()
 --   vim.cmd([[
 --     '<,'>normal! $o
 --   ]])

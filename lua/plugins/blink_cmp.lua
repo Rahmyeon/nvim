@@ -12,7 +12,11 @@ return {
     --   },
     -- },
     {'rafamadriz/friendly-snippets'},
-    { 'L3MON4D3/LuaSnip', version = 'v2.*' --[[, lazy = true --]]},
+    {
+      'L3MON4D3/LuaSnip',
+      version = 'v2.*',
+      lazy = true--[[, lazy = true --]]
+    },
   },
   opts_extend = {
     "sources.default",

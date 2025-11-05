@@ -1,0 +1,123 @@
+return { "catppuccin/nvim",
+  name = "catppuccin",
+  lazy = true,
+  priority = 1001,
+  opts = {
+    -- integrations = {
+    --   blink_cmp = true
+    -- },
+    -- transparent_background = true, -- disables setting the background color.
+    auto_integrations = true,
+    compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
+    -- transparent_background = false, -- disables setting the background color.
+    color_overrides = {
+      macchiato = {
+	      -- Core accents
+	      rosewater = "#e4bedd",
+	      flamingo = "#cb9595",
+	      pink = "#bb9dbd",
+	      mauve = "#c9a2e2",
+	      red = "#c48282",
+	      maroon = "#d6c4b7",
+	      peach = "#e7b58b",
+	      yellow = "#d6c4b7",
+	      green = "#b7d6b7",
+	      teal = "#89c5bb",
+	      sky = "#b6cdfb",
+	      sapphire = "#8eaeea",
+	      blue = "#6e93b1",
+	      lavender = "#c3c3d5",
+
+	      -- Text hierarchy
+	      text = "#cdcdcd",
+	      subtext1 = "#c3c3d5",
+	      subtext0 = "#90a0b5",
+
+	      -- Overlays
+	      overlay2 = "#6e94b2",
+	      overlay1 = "#606079",
+	      overlay0 = "#5a6a83",
+
+	      -- Surfaces
+	      surface2 = "#494d64",
+	      surface1 = "#333738",
+	      surface0 = "#252530",
+
+	      -- Bases
+	      base = "#1f202a",
+	      mantle = "#1c1c24",
+	      crust = "#0f0d0e",
+      },
+    },
+    highlight_overrides = {
+      macchiato = function(macchiato)
+        return {
+          -- ["@lsp.type.class"] = { fg = "#d6c4b7", bold = false, italic = true } -- brightened
+          -- ["SpecialChar"] = { fg = "#d6c4b7", bold = false, italic = true } -- brightened
+          ["@keyword.conditional"] = { fg = macchiato.pink}, -- brightened
+          ["@keyword.function"] = { fg = macchiato.pink}, -- brightened
+          ["@keyword.function.lua"] = { fg = macchiato.pink}, -- brightened
+          ["@lsp.type.method"] = { fg = macchiato.pink }, -- brightened
+          ["Keyword"] = { fg = macchiato.pink}, -- Brightened
+          ["StatusLine"] = { bg = macchiato.crust}, -- Brightened
+          ["Comment"] = { fg = macchiato.overlay1}, -- Brightened
+          ["Normal"] = { bg = macchiato.crust },
+          ["NormalNC"] = { bg = macchiato.crust },
+          ["@comment"] = { fg = macchiato.overlay1}, -- Brightened
+          ["@operator"] = { fg = macchiato.subtext0}, -- Brightened
+          ["@lsp.type.comment"] = { fg = macchiato.overlay1}, -- Brightened
+          ["@keyword.return"] = { fg = macchiato.red, bold = true, italic = true }, -- Brightened
+          ["@keyword.variable"] = { fg = macchiato.text }, -- brightened
+          ["@lsp.type.variable"] = { fg = macchiato.text }, -- brightened
+          ["@lsp.type.property"] = { fg = macchiato.text }, -- brightened
+          ["Delimiter"] = { fg = macchiato.text }, -- brightened
+          ["@punctuation"] = { fg = macchiato.text }, -- brightened
+          ["@punctuation.bracket"] = { fg = macchiato.text }, -- brightened
+          ["@constructor.lua"] = { fg = macchiato.text }, -- brightened
+          ["@lsp.type.parameter"] = { fg = macchiato.red }, -- brightened
+          ["FloatBorder"] = { fg = macchiato.text, bg = "none" },
+          ["NormalFloat"] = { bg = "none" },
+          ["BlinkCmpMenuBorder"] = {  bg = "none" },
+          ["BlinkCmpDocumentationBorder"] = {  bg = "none" },
+          ["BlinkCmpMenu"] = { bg = "none" },
+          -- ["BlinkCmpMenuSelection"] = {  bg = "none" },
+          ["NoiceCmdlinePopupBorder"] = { fg = macchiato.blue },
+          ["NoiceCmdlinePopupTitle"] = { fg = macchiato.blue },
+          ["NoiceCmdlineIcon"] = { fg = macchiato.blue },
+          -- ["Normal"] = { bg = "#0f0d0e" },
+          -- ["NormalNC"] = { bg = "#0f0d0e" },
+          ["Pmenu"] = { bg = "none" },
+          -- ["PmenuSel"] = { bg = "#6e738d" },
+          ["@markup.quote.markdown"] = { fg = macchiato.text, bold = false },
+          SnacksPickerBox = { bg = "none" }, -- Added subtle bg
+          VoidFloatTerm = { fg = macchiato.blue },
+          SagaLightBulb = { fg = macchiato.yellow },
+
+          StatusLineModeNormal   = { fg = macchiato.crust, bg = macchiato.blue, bold = true },
+          StatusLineModeInsert   = { fg = macchiato.crust, bg = macchiato.green, bold = true },
+          StatusLineModeVisual   = { fg = macchiato.crust, bg = macchiato.mauve, bold = true },
+          StatusLineModeCommand  = { fg = macchiato.crust, bg = macchiato.peach, bold = true },
+          StatusLineModeOther    = { fg = macchiato.crust, bg = macchiato.overlay0, bold = true },
+
+          -- Separators
+          StatusLineModeSeparatorNormal   = { fg = macchiato.blue, bg = macchiato.crust },
+          StatusLineModeSeparatorInsert   = { fg = macchiato.green, bg = macchiato.crust },
+          StatusLineModeSeparatorVisual   = { fg = macchiato.mauve, bg = macchiato.crust },
+          StatusLineModeSeparatorCommand  = { fg = macchiato.peach, bg = macchiato.crust },
+          StatusLineModeSeparatorOther    = { fg = macchiato.overlay0, bg = macchiato.crust },
+
+          -- Extras
+          StatusLineTitle   = { fg = macchiato.text, bold = true },
+          StatusLineItalic  = { fg = macchiato.overlay0, italic = true },
+          StatusLineError   = { fg = macchiato.red, bold = true },
+          StatusLineWarning = { fg = macchiato.yellow },
+          StatusLineHint    = { fg = macchiato.teal },
+          StatusLineSpinner = { fg = macchiato.sky },
+        }
+      end
+    }
+  }
+}
+
+
+

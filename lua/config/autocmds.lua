@@ -33,8 +33,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --   end,
 -- })
 
+local map = vim.keymap.set
 vim.opt.showbreak = "↪ "  -- Adds a visual indicator for wrapped lines
-
 
 -- Enable line wrapping and remap j/k for visual line movement in Markdown files
 vim.api.nvim_create_autocmd("FileType", {
@@ -43,13 +43,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true  -- Wrap at word boundaries
     -- Remap j and k to move by visual lines
-    vim.keymap.set("n", "j", "gj", { buffer = true })
-    vim.keymap.set("n", "k", "gk", { buffer = true })
-    vim.keymap.set("n", "$", "g$", { buffer = true })
-    vim.keymap.set("n", "g$", "$", { buffer = true })
-    vim.keymap.set("n", "gj", "j", { buffer = true })
-    vim.keymap.set("n", "gk", "k", { buffer = true })
-    vim.keymap.set("n", "0", "g0", { buffer = true })
+    map("n", "j", "gj", { buffer = true })
+    map("n", "k", "gk", { buffer = true })
+    map("n", "$", "g$", { buffer = true })
+    map("n", "g$", "$", { buffer = true })
+    map("n", "gj", "j", { buffer = true })
+    map("n", "gk", "k", { buffer = true })
+    map("n", "0", "g0", { buffer = true })
   end,
 })
 -- vim.api.nvim_set_hl(0, 'FloatBorder', {

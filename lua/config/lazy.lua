@@ -64,15 +64,15 @@ debug = false,
 	-- install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
 })
--- vim.cmd.colorscheme("catppuccin-macchiato")
-vim.cmd("colorscheme vague")
+vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd("colorscheme vague")
 require("config.options")
 require("config.autocmds")
-require("config.keymaps")
 require("lsp")
+require("statusline")
+require("config.keymaps")
 require("oil").setup()
 require('mini.surround').setup()
 require('mini.pairs').setup()
 -- require('colorizer').setup()
-require("statusline")
 
