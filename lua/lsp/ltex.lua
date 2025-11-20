@@ -1,5 +1,5 @@
 -- local util = require 'util.util'
-local on_attach = require("util.lsp").on_attach
+-- local on_attach = require("util.lsp").on_attach
 -- local lspconfig = require("lspconfig")
 
 -- local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -20,7 +20,7 @@ end
 
 vim.lsp.config.ltex_plus = ({
   -- capabilities = capabilities,
-  on_attach = on_attach,
+  -- on_attach = on_attach,
   filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd", "context", "html", "xhtml", "mail", "text" },
   cmd = { "ltex-ls-plus" },
   root_markers = {'.git' },

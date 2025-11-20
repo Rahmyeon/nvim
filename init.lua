@@ -30,10 +30,11 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
+
 -- Lazy Setup
 require("config.lazy")
 
-require('colorizer').setup()
+-- require('colorizer').setup()
 
 vim.cmd([[
   syntax on

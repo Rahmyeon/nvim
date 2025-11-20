@@ -33,8 +33,9 @@ return {
         preset = 'enter',
         ['<C-k>'] = {'select_prev' },
         ['<C-j>'] = { 'select_next'},
-        ['<space>'] = { 'accept', 'fallback' },
-        ['<tab>'] = { 'accept', 'fallback' }
+        -- ['<space>'] = { 'accept_and_enter', 'fallback' },
+        -- ['<tab>'] = { 'accept_and_enter', 'fallback' },
+        ['<C-y>'] = { 'accept_and_enter', 'fallback' }
       },
       completion = {
         list = {
@@ -115,7 +116,9 @@ return {
      ['<C-k>'] = {'select_prev' },
      ['<C-j>'] = { 'select_next'},
      -- ['<space>'] = { 'accept', 'fallback' },
-     ['<tab>'] = { 'accept', 'fallback' }
+     ['<space>'] = { 'accept', 'fallback' },
+     ['<tab>'] = { 'accept', 'fallback' },
+     ['<C-y>'] = { 'accept', 'fallback' }
    },
    appearance = {
      use_nvim_cmp_as_default = true,

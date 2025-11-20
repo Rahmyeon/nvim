@@ -1,7 +1,5 @@
 -- auto-format on save
 -- local lsp_fmt_group = vim.api.nvim_create_augroup("LspFormattingGroup", {})
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	group = lsp_fmt_group,
 -- 	callback = function()
 -- 		local efm = vim.lsp.get_clients({ name = "efm" })
 -- 
@@ -50,8 +48,60 @@ vim.api.nvim_create_autocmd("FileType", {
     map("n", "gj", "j", { buffer = true })
     map("n", "gk", "k", { buffer = true })
     map("n", "0", "g0", { buffer = true })
+    map("v", "<leader>mb", function()
+      -- Get the selected text range
+      local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
+      local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
+      -- Get the selected lines
+      local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+      local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
+      if selected_text:match("^%*%*.*%*%*$") then
+        vim.notify("Text already bold", vim.log.levels.INFO)
+      else
+        vim.cmd("normal 2sa*")
+      end
+    end, { desc = "[P]BOLD current selection" })
+
+    map("v", "<leader>mc", function()
+      -- Get the selected text range
+      local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
+      local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
+      -- Get the selected lines
+      local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+      local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
+      if selected_text:match("^%*%*.*%*%*$") then
+        vim.notify("Text already bold", vim.log.levels.INFO)
+      else
+        vim.cmd("normal sa`")
+      end
+    end, { desc = "[P]Code current selection" })
+
+    vim.cmd("TSBufEnable highlight")
   end,
 })
+
+-- restore cursor to file position in previous editing session
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function(args)
+		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+		local line_count = vim.api.nvim_buf_line_count(args.buf)
+		if mark[1] > 0 and mark[1] <= line_count then
+			vim.api.nvim_win_set_cursor(0, mark)
+			-- defer centering slightly so it's applied after render
+			vim.schedule(function()
+				vim.cmd("normal! zz")
+			end)
+		end
+	end,
+})
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "markdown",
+--   callback = function()
+--     vim.cmd("TSBufEnable highlight")
+--   end,
+-- })
+
 -- vim.api.nvim_set_hl(0, 'FloatBorder', {
 --   border = 'rounded',
 --   fg = '#91d7e3', -- Example foreground color

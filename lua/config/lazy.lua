@@ -69,10 +69,20 @@ vim.cmd.colorscheme("catppuccin-macchiato")
 require("config.options")
 require("config.autocmds")
 require("lsp")
+
+
 require("statusline")
 require("config.keymaps")
 require("oil").setup()
 require('mini.surround').setup()
 require('mini.pairs').setup()
--- require('colorizer').setup()
+require('mini.icons').setup()
+require('mini.ai').setup()
+require('mini.clue').setup()
 
+
+-- require('mini.hipatterns').setup()
+-- require('mini.operators').setup()
+require("config.plugin_options")
+-- require('mini.pick').setup()
+-- require('colorizer').setup()

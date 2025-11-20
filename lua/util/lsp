@@ -1,10 +1,10 @@
 -- local keymap = vim.keymap
-local map = vim.keymap.set
+-- local map = vim.keymap.set
 local M = {}
 
 M.on_attach = function(client, bufnr)
   -- key bind options
-  local opts = { noremap = true, silent = true, buffer = bufnr }
+  -- local opts = { noremap = true, silent = true, buffer = bufnr }
 
 ---- set keybinds
   -- -- keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definiton, references
@@ -21,9 +21,9 @@ M.on_attach = function(client, bufnr)
   -- keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what's under the cursor
 
   -- keymap.set("n", "<leader>lo", "<cmd>LSoutLinToggle<CR>", opts) -- see outline for right hand side
-  if client.name == "pyright" then
-    map("n", "<leader>oi", "<cmd>PyrightOrganizeImports<CR>", opts)
-    end
+  -- if client.name == "pyright" then
+  --   map("n", "<leader>oi", "<cmd>PyrightOrganizeImports<CR>", opts)
+  --   end
   end
 
 return M

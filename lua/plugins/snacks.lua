@@ -98,6 +98,7 @@ return {
     -- Search snacks picker higlight groups
     { "<leader>s1", function() Snacks.picker.highlights({pattern = "hl_group:^Snacks"}) end, desc = "[s]earch [1] snacks highlights" },
     { "<leader>ss", function() Snacks.picker.smart() end, desc = "[s]earch [s]mart" },
+    { "<F12>", "<Esc>", desc = "Escape" },
     -- Check undodir
     { "<leader>u", function() Snacks.picker.undo() end, desc = "[n]ile explorer" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },

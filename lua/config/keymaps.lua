@@ -41,8 +41,8 @@ map('n', '<leader>ma', ':Mason<CR>', opts)
 map("n", "<leader>qb", ":bd!<CR>", opts)
 
 -- Save file
-map("n", "<leader>wf", ":w<CR>", { noremap = true, silent = false })
-map("n", "<leader>ww", ":noa w<CR>", { noremap = true, silent = false })
+map("n", "<leader>wf", ":w<CR>", { noremap = true, silent = false,  desc = "Save and Format" })
+map("n", "<leader>ww", ":noa w<CR>", { noremap = true, silent = false, desc = "Save without format"})
 
 -- Remove highlights
 map("n", "<leader>no", ":noh<CR>", { noremap = true, silent = false })
@@ -93,11 +93,11 @@ map("n", "gd", vim.lsp.buf.definition, {})
 map("n", "gr", vim.lsp.buf.references, {})
 
 
-map("n", "]g", function()
+map("n", "]d", function()
   vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to next diagnostic" })
 
-map("n", "[g", function()
+map("n", "[d", function()
   vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Go to previous diagnostic" })
 
@@ -181,8 +181,26 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	end,
 })
 
+-- local key_seq = vim.api.nvim_replace_termcodes("\x1b[27;5;13~", true, false, true)
+-- vim.keymap.set("i", key_seq, "<Esc>", { silent = true })
 
 
+
+-- vim.keymap.set({"n", "i", "v"}, "\x1b[27;5;13~", "<Esc>", { 
+--   noremap = true, 
+--   silent = true,
+--
+-- })
+
+
+-- vim.opt.keyprotocol = kitty"
+-- \x1b[27;5;13~
+-- vim.keymap.set({ "i" }, "\x1b[27;5;13~", function ()
+--   print("I was pressed") 
+-- end, { noremap = true })
+map({"n", "i", "v"}, "<F12>", "<Esc>", opts)
+
+-- map({"i"}, "<C-m>", "<Esc>", opts)
 
 -- map("x", "O", function ()
 --   vim.cmd([[

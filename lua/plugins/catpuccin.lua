@@ -47,6 +47,8 @@ return { "catppuccin/nvim",
 	      base = "#1f202a",
 	      mantle = "#1c1c24",
 	      crust = "#0f0d0e",
+        -- crust = "#1d1d1d"
+
       },
     },
     highlight_overrides = {

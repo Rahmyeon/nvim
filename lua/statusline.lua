@@ -30,17 +30,53 @@ end
 --- Mode display
 function M.mode_component()
   local mode_to_str = {
-    n = 'NORMAL',
-    i = 'INSERT',
-    v = 'VISUAL',
-    V = 'VISUAL',
-    ['\22'] = 'VISUAL', -- CTRL-V
-    c = 'COMMAND',
-    s = 'SELECT',
-    S = 'SELECT',
-    r = 'PROMPT',
-    R = 'REPLACE',
-    t = 'TERMINAL',
+    -- n = 'NORMAL',
+    -- i = 'INSERT',
+    -- v = 'VISUAL',
+    -- V = 'VISUAL',
+    -- ['\22'] = 'VISUAL', -- CTRL-V
+    -- c = 'COMMAND',
+    -- s = 'SELECT',
+    -- S = 'SELECT',
+    -- r = 'PROMPT',
+    -- R = 'REPLACE',
+    -- t = 'TERMINAL',
+   ['n'] = 'NORMAL',
+   ['no'] = 'OP-PENDING',
+   ['nov'] = 'OP-PENDING',
+   ['noV'] = 'OP-PENDING',
+   ['no\22'] = 'OP-PENDING',
+   ['niI'] = 'NORMAL',
+   ['niR'] = 'NORMAL',
+   ['niV'] = 'NORMAL',
+   ['nt'] = 'NORMAL',
+   ['ntT'] = 'NORMAL',
+   ['v'] = 'VISUAL',
+   ['vs'] = 'VISUAL',
+   ['V'] = 'VISUAL',
+   ['Vs'] = 'VISUAL',
+   ['\22'] = 'VISUAL',
+   ['\22s'] = 'VISUAL',
+   ['s'] = 'SELECT',
+   ['S'] = 'SELECT',
+   ['\19'] = 'SELECT',
+   ['i'] = 'INSERT',
+   ['ic'] = 'INSERT',
+   ['ix'] = 'INSERT',
+   ['R'] = 'REPLACE',
+   ['Rc'] = 'REPLACE',
+   ['Rx'] = 'REPLACE',
+   ['Rv'] = 'VIRT REPLACE',
+   ['Rvc'] = 'VIRT REPLACE',
+   ['Rvx'] = 'VIRT REPLACE',
+   ['c'] = 'COMMAND',
+   ['cv'] = 'VIM EX',
+   ['ce'] = 'EX',
+   ['r'] = 'PROMPT',
+   ['rm'] = 'MORE',
+   ['r?'] = 'CONFIRM',
+   ['!'] = 'SHELL',
+   ['t'] = 'TERMINAL',
   }
   local mode = mode_to_str[vim.api.nvim_get_mode().mode] or 'UNKNOWN'
   local hl = 'Other'
@@ -50,7 +86,8 @@ function M.mode_component()
     hl = 'Visual'
   elseif mode:find 'INSERT' or mode:find 'SELECT' then
     hl = 'Insert'
-  elseif mode:find 'COMMAND' or mode:find 'TERMINAL' then
+  elseif mode:find 'COMMAND' or mode:find 'TERMINAL' or mode:find 'EX' then
+
     hl = 'Command'
   end
   return table.concat {

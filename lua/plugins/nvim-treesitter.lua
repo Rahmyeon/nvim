@@ -1,21 +1,22 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
   lazy = vim.fn.argc(-1) == 0,
+  -- lazy = false,
   event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
   opts = {
 		indent = {
 			enable = true,
 		},
 		ensure_installed = {
-      "c_sharp",
+      -- "c_sharp",
 			"lua",
-			"dockerfile",
+			-- "dockerfile",
 			"gitignore",
-			"javascript",
-			"html",
-			"css",
+			-- "javascript",
+			-- "html",
+			-- "css",
 			"lua",
-			"python",
+			-- "python",
 			"c",
 			"cpp",
 			-- "zig",
@@ -30,8 +31,11 @@ return {
 		auto_install = true,
 		highlight = {
 			enable = true,
-			-- additional_vim_regex_highlighting = true,
+			-- additional_vim_regex_highlighting = true
 		},
+    injection = {
+      enable = true,
+    }
   }
 }
 --Downloaded c, cpp, css, html, python,query, javascript

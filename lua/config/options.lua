@@ -1,9 +1,9 @@
 local opt = vim.opt
 
 -- Override vim.notify to use snacks
-vim.notify = function(msg, level, opts)
-  Snacks.notifier.notify(msg, level, opts)
-end
+-- vim.notify = function(msg, level, opts)
+--   Snacks.notifier.notify(msg, level, opts)
+-- end
 
 -- Tab / Indentation
 opt.tabstop = 2
@@ -13,7 +13,7 @@ opt.expandtab = true
 opt.smartindent = true
 opt.wrap = false
 
-
+ 
 -- opt.laststatus=0
 -- Search
 opt.incsearch = true
@@ -64,7 +64,9 @@ opt.encoding = "UTF-8"
 -- Performance
 opt.redrawtime = 10000
 opt.maxmempattern = 20000
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 
+vim.o.winborder = 'rounded'   -- Use border in floating windows
 -- Example in your init.lua or a file like lua/config/lsp.lua
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -74,3 +76,5 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts.border = "rounded" -- Or any other border
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+
