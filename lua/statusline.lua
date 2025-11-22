@@ -30,17 +30,6 @@ end
 --- Mode display
 function M.mode_component()
   local mode_to_str = {
-    -- n = 'NORMAL',
-    -- i = 'INSERT',
-    -- v = 'VISUAL',
-    -- V = 'VISUAL',
-    -- ['\22'] = 'VISUAL', -- CTRL-V
-    -- c = 'COMMAND',
-    -- s = 'SELECT',
-    -- S = 'SELECT',
-    -- r = 'PROMPT',
-    -- R = 'REPLACE',
-    -- t = 'TERMINAL',
    ['n'] = 'NORMAL',
    ['no'] = 'OP-PENDING',
    ['nov'] = 'OP-PENDING',
@@ -90,10 +79,15 @@ function M.mode_component()
 
     hl = 'Command'
   end
+  -- return table.concat {
+  --   string.format('%%#StatusLineModeSeparator%s#', hl),
+  --   string.format('%%#StatusLineMode%s#%s', hl, mode),
+  --   string.format('%%#StatusLineModeSeparator%s#', hl),
+  -- }
   return table.concat {
-    string.format('%%#StatusLineModeSeparator%s#', hl),
+    string.format('%%#StatusLineModeSeparator%s#|█', hl),
     string.format('%%#StatusLineMode%s#%s', hl, mode),
-    string.format('%%#StatusLineModeSeparator%s#', hl),
+    string.format('%%#StatusLineModeSeparator%s#█|', hl),
   }
 end
 
