@@ -16,7 +16,8 @@
  │   │   ├── autocmds.lua
  │   │   ├── keymaps.lua
  │   │   ├── lazy.lua
- │   │   └── options.lua
+ │   │   ├── options.lua
+ │   │   └── plugin_options.lua
  │   ├── lsp/
  │   │   ├── MO
  │   │   ├── cpp
@@ -30,24 +31,19 @@
  │   │   ├── init.lua
  │   │   └── signs.lua
  │   ├── plugins/
- │   │   ├── colorizer.lua
  │   │   ├── blink.lua
  │   │   ├── catppuccin.lua
+ │   │   ├── flash.lua
  │   │   ├── LuaSnip.lua
  │   │   ├── mason.lua
- │   │   ├── mini-icons.lua
- │   │   ├── mini-pairs.lua
- │   │   ├── mini-surround.lua
+ │   │   ├── nvim-mini.lua
  │   │   ├── none-ls.lua
  │   │   ├── nvim-treesitter.lua
  │   │   ├── oil.lua
- │   │   ├── snacks.lua
- │   │   └── which-key.lua
+ │   │   └── snacks.lua
  │   │   
  │   ├──  util/
- │   │   ├── icons.lua
- │   │   ├── lsp.lua
- │   │   └── util.lua
+ │   │   └── icons.lua
  │   │
  │   └── statusline.lua
  ```

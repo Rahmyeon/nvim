@@ -42,21 +42,22 @@ require("lazy").setup({
     },
 	},
  	performance = {
-	cache = {
-		enabled = true,
-	},
-	rtp = {
-		disabled_plugins = {
-			"matchit",
-			"matchparen",
-			"netrwPlugin",
-			"gzip",
-			"tarPlugin",
-			"tohtml",
-			"tutor",
-			"zipPlugin",
-		},
-	},
+	  cache = {
+	  	enabled = true,
+	  },
+	  rtp = {
+      reset = true,
+	  	disabled_plugins = {
+	  		"matchit",
+	  		"matchparen",
+	  		"netrwPlugin",
+	  		"gzip",
+	  		"tarPlugin",
+	  		"tohtml",
+	  		"tutor",
+	  		"zipPlugin",
+	  	},
+	  },
 },
 debug = false,
 	-- Configure any other settings here. See the documentation for more details.
@@ -65,6 +66,7 @@ debug = false,
 	-- automatically check for plugin updates
 })
 vim.cmd.colorscheme("catppuccin-macchiato")
+-- vim.cmd.colorscheme("catppuccin-latte")
 -- vim.cmd("colorscheme vague")
 require("config.options")
 require("config.autocmds")
@@ -74,7 +76,7 @@ require("lsp")
 require("statusline")
 require("config.keymaps")
 require("oil").setup()
-require('mini.surround').setup()
+-- require('mini.surround').setup()
 require('mini.pairs').setup()
 require('mini.icons').setup()
 require('mini.ai').setup()

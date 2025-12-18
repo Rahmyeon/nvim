@@ -4,6 +4,7 @@ return {
   lazy = false,
   opts = {
     bigfile = {enabled = true},
+    rename = {enabled = true},
     terminal = {
       shell = {"pwsh.exe", "-nologo"},
     },
@@ -72,26 +73,26 @@ return {
     -- Search Highlights
     { "<leader>sH", function() Snacks.picker.highlights() end, desc = "[s]heck [H]ighlights " },
     -- Terminal open
-    { "<leader>to", function()
-      Snacks.terminal.toggle(
-        {"pwsh", "-nologo"},
-        {
-          win = {
-            style = "terminal",
-            border = "rounded",
-            backdrop = { bg = "none" },
-            relative = "editor",
-            width = 0.9,
-            height = 0.9,
-            -- title = "•¤ << VOID >> ¤•",
-            title_pos = "center",
-            wo = {
-              winhighlight = "FloatBorder:VoidFloatTerm,FloatTitle:VoidFloatTerm"
-            },
-          },
-        }
-      )
-    end, desc = "[t]erminal [o]pen" },
+    -- { "<leader>to", function()
+    --   Snacks.terminal.toggle(
+    --     {"pwsh", "-nologo"},
+    --     {
+    --       win = {
+    --         style = "terminal",
+    --         border = "rounded",
+    --         backdrop = { bg = "none" },
+    --         relative = "editor",
+    --         width = 0.9,
+    --         height = 0.9,
+    --         -- title = "•¤ << VOID >> ¤•",
+    --         title_pos = "center",
+    --         wo = {
+    --           winhighlight = "FloatBorder:VoidFloatTerm,FloatTitle:VoidFloatTerm"
+    --         },
+    --       },
+    --     }
+    --   )
+    -- end, desc = "[t]erminal [o]pen" },
     -- Toggle file finders
     { "<leader>f", function() Snacks.picker.explorer() end, desc = "[f]ile explorer" },
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "[s]earch [q]uick fix list" },

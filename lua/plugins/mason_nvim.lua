@@ -14,9 +14,9 @@ return {
 				package_uninstalled = "✗",
 			},
     ensure_installed = {
-        "marksmans",
-        "markdown-toc",
-        "markdownlint-cli2",
+        -- "marksmans",
+        -- "markdown-toc",
+        -- "markdownlint-cli2",
         "clangd",
         "clang-format",
         "mypy"

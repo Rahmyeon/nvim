@@ -7,6 +7,6 @@ require('lsp.other_util')
 require('lsp.signs')
 -- require('lsp.csharp')
 require('lsp.ltex')
-
+require('lsp.java2')
 -- require('lsp.cpp')
-require('lsp.java')
+-- require('lsp.java')

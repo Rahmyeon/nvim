@@ -85,9 +85,9 @@ function M.mode_component()
   --   string.format('%%#StatusLineModeSeparator%s#', hl),
   -- }
   return table.concat {
-    string.format('%%#StatusLineModeSeparator%s#|█', hl),
+    string.format('%%#StatusLineModeSeparator%s#█', hl),
     string.format('%%#StatusLineMode%s#%s', hl, mode),
-    string.format('%%#StatusLineModeSeparator%s#█|', hl),
+    string.format('%%#StatusLineModeSeparator%s#█', hl),
   }
 end
 

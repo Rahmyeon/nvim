@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd("FileType", {
       if selected_text:match("^%*%*.*%*%*$") then
         vim.notify("Text already bold", vim.log.levels.INFO)
       else
-        vim.cmd("normal 2sa*")
+        vim.cmd("normal g2sa*")
       end
     end, { desc = "[P]BOLD current selection" })
 
@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd("FileType", {
       if selected_text:match("^%*%*.*%*%*$") then
         vim.notify("Text already bold", vim.log.levels.INFO)
       else
-        vim.cmd("normal sa`")
+        vim.cmd("normal gsa`")
       end
     end, { desc = "[P]Code current selection" })
 
@@ -93,6 +93,29 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			end)
 		end
 	end,
+})
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "java",
+--   callback = function()
+--     vim.opt_local.makeprg = "javac %"
+--   end,
+-- })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function()
+    vim.keymap.set("n", "<leader>cf", ":!javac %<CR>", { buffer = true, desc = "Compile Java" })
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "OilActionsPost",
+  callback = function(event)
+      if event.data.actions[1].type == "move" then
+          Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
+      end
+  end,
 })
 
 -- vim.api.nvim_create_autocmd("FileType", {

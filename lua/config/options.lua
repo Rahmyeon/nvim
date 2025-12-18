@@ -12,9 +12,9 @@ opt.softtabstop = 2
 opt.expandtab = true
 opt.smartindent = true
 opt.wrap = false
-
- 
--- opt.laststatus=0
+-- Status line
+vim.o.laststatus = 3
+vim.o.cmdheight = 1
 -- Search
 opt.incsearch = true
 opt.ignorecase = true
@@ -69,6 +69,14 @@ vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 vim.o.winborder = 'rounded'   -- Use border in floating windows
 -- Example in your init.lua or a file like lua/config/lsp.lua
 
+-- Disable health checks for these providers.
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
+-- windows specific
+--
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 ---@diagnostic disable-next-line: duplicate-set-field
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)

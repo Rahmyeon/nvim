@@ -53,12 +53,10 @@ map("n", "<leader>no", ":noh<CR>", { noremap = true, silent = false })
 -- map("n", "<leader>f", ":NvimTreeToggle<CR>", opts)
 
 --Pane navigation
--- map("n", "<C-h>", "<C-w>h", opts) -- Navigate left
--- map("n", "<C-j>", "<C-w>j", opts) -- Navigate Down
--- map("n", "<C-k>", "<C-w>k", opts) -- Navigate up
--- map("n", "<C-l>", "<C-w>l", opts) -- Naviage right
-
-
+map("n", "<C-h>", "<C-w>h", opts) -- Navigate left
+map("n", "<C-j>", "<C-w>j", opts) -- Navigate Down
+map("n", "<C-k>", "<C-w>k", opts) -- Navigate up
+map("n", "<C-l>", "<C-w>l", opts) -- Naviage right
 
 
 -- Create a function to toggle window zoom
@@ -89,17 +87,18 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Half a page up centered"})
 -- Key maps for extended menu plugin
 -- Keyboard users
 map("n", "K", vim.lsp.buf.hover, {})
+-- map("n", "<leader>k", vim.lsp.buf.hover, {})
 map("n", "gd", vim.lsp.buf.definition, {})
-map("n", "gr", vim.lsp.buf.references, {})
+-- map("n", "gr", vim.lsp.buf.references, {})
 
 
-map("n", "]d", function()
-  vim.diagnostic.jump({ count = 1, float = true })
-end, { desc = "Go to next diagnostic" })
-
-map("n", "[d", function()
-  vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = "Go to previous diagnostic" })
+-- map("n", "]d", function()
+--   vim.diagnostic.jump({ count = 1, float = true })
+-- end, { desc = "Go to next diagnostic" })
+--
+-- map("n", "[d", function()
+--   vim.diagnostic.jump({ count = -1, float = true })
+-- end, { desc = "Go to previous diagnostic" })
 
 
 map("n", "<leader>ca", vim.lsp.buf.code_action, {})
@@ -199,6 +198,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 --   print("I was pressed") 
 -- end, { noremap = true })
 map({"n", "i", "v"}, "<F12>", "<Esc>", opts)
+
+
 
 -- map({"i"}, "<C-m>", "<Esc>", opts)
 
