@@ -5,15 +5,16 @@ return {
   opts = {
     bigfile = {enabled = true},
     rename = {enabled = true},
-    terminal = {
-      shell = {"pwsh.exe", "-nologo"},
-    },
+    -- terminal = {
+    --   shell = {"pwsh.exe", "-nologo"},
+    -- },
     -- scroll = { enabled = false },
-    indent = {
-      animate = {
-        enabled = false,
-      }
-    },
+    -- indent = {
+    --   animate = {
+    --     enabled = false,
+    --   }
+    -- },
+    -- image = {enabled = true},
     quickfile = {enabled = true},
     -- gitbrowse = {enabled = true},
     dashboard = {
@@ -105,7 +106,7 @@ return {
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
     { "<leader>s:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>qe", function() Snacks.notifier.hide() end, desc = "hide notifications" },
-    { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    -- { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+    -- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
   },
 }

@@ -1,7 +1,7 @@
 -- local on_attach = require("util.lsp").on_attach
 -- local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-vim.lsp.config.luals = {
+return {
   -- Command and arguments to start the server.
   cmd = { 'lua-language-server' },
   -- capabilities = capabilities,
@@ -37,7 +37,3 @@ vim.lsp.config.luals = {
   -- defined by the server. For example the schema for lua-language-server
   -- can be found here https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
 }
-
-
-
-vim.lsp.enable({'luals'})

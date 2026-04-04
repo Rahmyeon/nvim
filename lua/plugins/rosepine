@@ -1,0 +1,8 @@
+-- lua/plugins/rose-pine.lua
+return {
+	"ramojus/mellifluous.nvim",
+	-- name = "rose-pine",
+	config = function()
+		vim.cmd("colorscheme mellifluous")
+	end
+}

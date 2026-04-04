@@ -1,8 +1,14 @@
-vim.cmd([[
-  syntax off
-  filetype off
-  filetype plugin indent off
-]])
+vim.loader.enable()
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
+
+-- Enable all filetype plugins and syntax (if not enabled, for better startup)
+vim.cmd('filetype plugin indent on')
+if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
+-- vim.cmd([[
+--   syntax off
+--   filetype off
+--   filetype plugin indent off
+-- ]])
 
 local vim = vim
 local g = vim.g
@@ -34,8 +40,8 @@ g.loaded_netrwFileHandlers = 1
 -- Lazy Setup
 require("config.lazy")
 
-vim.cmd([[
-  syntax on
-  filetype on
-  filetype plugin indent on
-]])
+-- vim.cmd([[
+--   syntax on
+--   filetype on
+--   filetype plugin indent on
+-- ]])

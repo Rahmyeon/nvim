@@ -17,6 +17,14 @@ return {
         })
         ,
         null_ls.builtins.formatting.stylua,     -- Formatter
+        null_ls.builtins.diagnostics.sqlfluff.with({
+          extra_args = {'--dialect', 'postgres'},
+          filetypes =  { 'sql'}
+
+          -- condition = function(utils)
+          --   return utils.executable("sqlfluff")
+          -- end,
+        }),  --diagnostics
         -- Python
         null_ls.builtins.diagnostics.mypy,      -- diagnostsics
         -- null_ls.builtins.diagnostics.ruff,      -- diagnostics

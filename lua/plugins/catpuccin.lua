@@ -8,6 +8,10 @@ return { "catppuccin/nvim",
     -- },
     -- transparent_background = true, -- disables setting the background color.
     auto_integrations = true,
+    background = { -- :h background
+        light = "latte",
+        dark = "macchiato",
+    },
     compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
     -- transparent_background = false, -- disables setting the background color.
     color_overrides = {
@@ -81,6 +85,7 @@ return { "catppuccin/nvim",
        surface0 = "#252530",
 
        -- Bases
+       -- base = "#232136",
        base = "#1f202a",
        mantle = "#1c1c24",
        -- crust = "#232136",
@@ -127,6 +132,7 @@ return { "catppuccin/nvim",
           ["Pmenu"] = { bg = "none" },
           -- ["PmenuSel"] = { bg = "#6e738d" },
           ["@markup.quote.markdown"] = { fg = latte.text, bold = false },
+          ["@markup.italic"] = { fg = latte.green },
           SnacksPickerBox = { bg = "none" }, -- Added subtle bg
           VoidFloatTerm = { fg = latte.blue },
           SagaLightBulb = { fg = latte.yellow },
@@ -195,6 +201,7 @@ return { "catppuccin/nvim",
           ["Pmenu"] = { bg = "none" },
           -- ["PmenuSel"] = { bg = "#6e738d" },
           ["@markup.quote.markdown"] = { fg = macchiato.text, bold = false },
+          ["@markup.italic"] = { fg = macchiato.green },
           SnacksPickerBox = { bg = "none" }, -- Added subtle bg
           -- VoidFloatTerm = { fg = macchiato.blue },
           -- SagaLightBulb = { fg = macchiato.yellow },

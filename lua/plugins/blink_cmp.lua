@@ -1,6 +1,6 @@
 return {
   'saghen/blink.cmp',
-  version = '*',
+  version = '1.*',
   -- commit = '095dc77',
   -- !Important! Make sure you're using the latest release of LuaSnip
   -- `main` does not work at the moment
@@ -48,68 +48,76 @@ return {
       }
     },
     sources = {
-    default = {
-        -- 'dictionary',
-        'lsp',
-        'path',
-        'snippets',
-        'buffer',
-        -- 'lazydev',
-        -- 'markdown'
+      default = {
+          -- 'dictionary',
+          'lsp',
+          'path',
+          'snippets',
+          'buffer',
+          -- 'lazydev',
+          -- 'markdown'
       },
-    providers = {
-      -- lazydev = {
-      --   name = "Lazydev",
-      --   module = 'lazydev.integrations.blink',
-      --   score_offset = 70,
+      -- per_filetype = {
+      --   sql = {'snippets', 'dadbod', 'buffer'}
       -- },
-      lsp = {
-        name = "lsp",
-        module = 'blink.cmp.sources.lsp',
-        score_offset = 100,
-        max_items = 3,
-      },
-      buffer = {
-        name = "buffers",
-        module = 'blink.cmp.sources.buffer',
-        score_offset = 75,
-        max_items = 3,
-      },
-      snippets = {
-        name = "snippets",
-        module =  'blink.cmp.sources.snippets',
-        max_items = 4,
-        score_offset = -40,
-      },
-      -- markdown = {
-      --   name = 'RenderMarkdown',
-      --   module = 'render-markdown.integ.blink',
-      --   fallbacks = { 'lsp' },
-      --   score_offset = 85,
-      --  },
-       -- dictionary = {
-       --  name = 'Dict',
-       --  module = 'blink-cmp-dictionary',
-       --  enabled = true,
-       --  min_keyword_length = 5,
-       --  max_items = 8,
-       --  score_offset = 65,
-       --  opts = {
-       --    dictionary_directories = { "~/dictionaries"},
-       --    -- separate_output = function(output)
-       --    --     local items = {}
-       --    --     for line in output:gmatch("[^\r\n]+") do
-       --    --         table.insert(items, {
-       --    --             label = line,
-       --    --             insert_text = line,
-       --    --             documentation = nil
-       --    --         })
-       --    --     end
-       --    --     return items
-       --    -- end
-       --   }
-       -- }
-     }
+      providers = {
+        -- lazydev = {
+        --   name = "Lazydev",
+        --   module = 'lazydev.integrations.blink',
+        --   score_offset = 70,
+        -- },
+        lsp = {
+          name = "lsp",
+          module = 'blink.cmp.sources.lsp',
+          score_offset = 99,
+          max_items = 3,
+        },
+        buffer = {
+          name = "buffers",
+          module = 'blink.cmp.sources.buffer',
+          score_offset = 75,
+          max_items = 3,
+        },
+        snippets = {
+          name = "snippets",
+          module =  'blink.cmp.sources.snippets',
+          max_items = 4,
+          score_offset = -40,
+        },
+        -- dadbod = {
+        --   name = "Dadbod",
+        --   module = "vim_dadbod_completion.blink",
+        --   score_offset = 100
+        -- },
+        -- markdown = {
+        --   name = 'RenderMarkdown',
+        --   module = 'render-markdown.integ.blink',
+        --   fallbacks = { 'lsp' },
+        --   score_offset = 85,
+        --  },
+         -- dictionary = {
+         --  name = 'Dict',
+         --  module = 'blink-cmp-dictionary',
+         --  enabled = true,
+         --  min_keyword_length = 5,
+         --  max_items = 8,
+         --  score_offset = 65,
+         --  opts = {
+         --    dictionary_directories = { "~/dictionaries"},
+         --    -- separate_output = function(output)
+         --    --     local items = {}
+         --    --     for line in output:gmatch("[^\r\n]+") do
+         --    --         table.insert(items, {
+         --    --             label = line,
+         --    --             insert_text = line,
+         --    --             documentation = nil
+         --    --         })
+         --    --     end
+         --    --     return items
+         --    -- end
+         --   }
+         -- }
+      }
    },
    keymap = {
      preset = 'enter',

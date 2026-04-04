@@ -32,53 +32,92 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- })
 
 local map = vim.keymap.set
-vim.opt.showbreak = "↪ "  -- Adds a visual indicator for wrapped lines
+-- vim.opt.showbreak = "↪ "  -- Adds a visual indicator for wrapped lines
 
 -- Enable line wrapping and remap j/k for visual line movement in Markdown files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.linebreak = true  -- Wrap at word boundaries
-    -- Remap j and k to move by visual lines
-    map("n", "j", "gj", { buffer = true })
-    map("n", "k", "gk", { buffer = true })
-    map("n", "$", "g$", { buffer = true })
-    map("n", "g$", "$", { buffer = true })
-    map("n", "gj", "j", { buffer = true })
-    map("n", "gk", "k", { buffer = true })
-    map("n", "0", "g0", { buffer = true })
-    map("v", "<leader>mb", function()
-      -- Get the selected text range
-      local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
-      local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
-      -- Get the selected lines
-      local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
-      local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
-      if selected_text:match("^%*%*.*%*%*$") then
-        vim.notify("Text already bold", vim.log.levels.INFO)
-      else
-        vim.cmd("normal g2sa*")
-      end
-    end, { desc = "[P]BOLD current selection" })
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "markdown",
+--   callback = function()
+--     vim.opt_local.wrap = true
+--     vim.opt_local.linebreak = true  -- Wrap at word boundaries
+--     -- Remap j and k to move by visual lines
+--     map("n", "j", "gj", { buffer = true })
+--     map("n", "k", "gk", { buffer = true })
+--     map("n", "$", "g$", { buffer = true })
+--     map("n", "g$", "$", { buffer = true })
+--     map("n", "gj", "j", { buffer = true })
+--     map("n", "gk", "k", { buffer = true })
+--     map("n", "0", "g0", { buffer = true })
+--     map("n", "g0", "0", { buffer = true })
+--     map("v", "<leader>mi", function()
+--       -- Get the selected text range
+--       local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
+--       local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
+--       -- Get the selected lines
+--       local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+--       local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
+--       if selected_text:match("^%*%*.*%*%*$") then
+--         vim.notify("Text already italic", vim.log.levels.INFO)
+--       else
+--         vim.cmd("normal sa*")
+--       end
+--     end, { desc = "[P]BOLD current selection" })
+--     map("v", "<leader>mb", function()
+--       -- Get the selected text range
+--       local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
+--       local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
+--       -- Get the selected lines
+--       local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+--       local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
+--       if selected_text:match("^%*%*.*%*%*$") then
+--         vim.notify("Text already bold", vim.log.levels.INFO)
+--       else
+--         vim.cmd("normal 2sa*")
+--       end
+--     end, { desc = "[P]BOLD current selection" })
+--
+--     map("v", "<leader>mc", function()
+--       -- Get the selected text range
+--       local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
+--       local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
+--       -- Get the selected lines
+--       local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+--       local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
+--       if selected_text:match("^%*%*.*%*%*$") then
+--         vim.notify("Text already code", vim.log.levels.INFO)
+--       else
+--         vim.cmd("normal sa`")
+--       end
+--     end, { desc = "[P]Code current selection" })
+--
+--     vim.cmd("TSBufEnable highlight")
+--   end,
+-- })
 
-    map("v", "<leader>mc", function()
-      -- Get the selected text range
-      local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
-      local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
-      -- Get the selected lines
-      local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
-      local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
-      if selected_text:match("^%*%*.*%*%*$") then
-        vim.notify("Text already bold", vim.log.levels.INFO)
-      else
-        vim.cmd("normal gsa`")
-      end
-    end, { desc = "[P]Code current selection" })
+-- local langs = {
+--   "lua",
+--   "gitignore",
+--   "c",
+--   "cpp",
+--   "markdown",
+--   "toml",
+--   "json",
+--   "java",
+-- }
 
-    vim.cmd("TSBufEnable highlight")
-  end,
-})
+-- local filetypes = {}
+-- for _, lang in ipairs(langs) do
+--   for _, ft in ipairs(vim.treesitter.language.get_filetypes(lang)) do
+--     table.insert(filetypes, ft)
+--   end
+-- end
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = filetypes,
+--   callback = function(ev)
+--     vim.treesitter.start(ev.buf)
+--   end,
+-- })
 
 -- restore cursor to file position in previous editing session
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -117,6 +156,8 @@ vim.api.nvim_create_autocmd("User", {
       end
   end,
 })
+
+
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "markdown",

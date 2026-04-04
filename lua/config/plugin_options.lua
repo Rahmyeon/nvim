@@ -1,9 +1,9 @@
-local hipatterns = require('mini.hipatterns')
-hipatterns.setup({
-  highlighters = {
-    hex_color = hipatterns.gen_highlighter.hex_color(),
-  }
-})
+-- local hipatterns = require('mini.hipatterns')
+-- hipatterns.setup({
+--   highlighters = {
+--     hex_color = hipatterns.gen_highlighter.hex_color(),
+--   }
+-- })
 --
 local miniclue = require('mini.clue')
 miniclue.setup({
@@ -73,13 +73,13 @@ miniclue.setup({
 -- })
 require("mini.surround").setup({
   mappings = {
-    add = "gsa", -- Add surrounding in Normal and Visul modes
+    -- add = "gsa", -- Add surrounding in Normal and Visul modes
     -- delete = "gsd", -- Delete surrounding
     -- find = "gsf", -- Find surrounding (to the right)
     -- find_left = "gsF", -- Find surrounding (to the left)
     -- highlight = "gsh", -- Highlight surrounding
     -- replce = "gsr", -- Replace surrounding
-    update_n_lines = "gsn", -- Update `n_lines`
+    -- update_n_lines = "gsn", -- Update `n_lines`
   },
 })
 
@@ -102,8 +102,9 @@ require("mini.ai").setup({
 
     -- Classes
     c = require("mini.ai").gen_spec.treesitter({
-      a = "@class.outer",
-      i = "@class.inner",
+      a = { "@class.outer" },
+      i = { "@class.inner" }
+      -- i = { "@class.inner", "^.().*().$"}
     }),
 
     -- HTML tags

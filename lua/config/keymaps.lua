@@ -200,11 +200,41 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 map({"n", "i", "v"}, "<F12>", "<Esc>", opts)
 
 
+-- vim.keymap.set("i", "<C-b>", function()
+--   local c1 = vim.fn.getcharstr()
+--   local c2 = vim.fn.getcharstr()
+--   local ch = vim.fn.digraph_get(c1, c2)
+--   if ch ~= "" then
+--     vim.api.nvim_put({ ch }, "c", true, true)
+--   end
+-- end)
+--
+--
+vim.keymap.set("i", "<C-b>", function()
+  -- Using a temporary variable to avoid cluttering the command line
+  print("Digraph...")
+  
+  local c1 = vim.fn.getcharstr()
+  local c2 = vim.fn.getcharstr()
+  
+  -- Clear the "Digraph..." message
+  vim.cmd("normal! :")
 
--- map({"i"}, "<C-m>", "<Esc>", opts)
+  local ch = vim.fn.digraph_get(c1 .. c2)
 
--- map("x", "O", function ()
---   vim.cmd([[
---     '<,'>normal! $o
---   ]])
--- end, {desc = "Visual block open line below"})
+  if ch ~= "" then
+    -- 'n' = do not use remaps (safe)
+    -- 't' = treat like user typed it (respects indent/brackets)
+    local keys = vim.api.nvim_replace_termcodes(ch, true, false, true)
+    vim.api.nvim_feedkeys(keys, "nt", false)
+  else
+    vim.api.nvim_echo({{"Invalid digraph", "WarningMsg"}}, false, {})
+  end
+end, { desc = "Insert digraph safely" })
+-- vim.keymap.set({"n","i","v"}, "<C-c>", "<Esc>", { noremap = true })
+vim.keymap.set({"n", "v", "o"}, "o", "<Nop>")
+vim.keymap.set({"n", "v", "o"}, "O", "<Nop>")
+
+-- Faster response and prevent issues
+-- vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
+-- vim.keymap.set('i', 'kj', '<Esc>', { noremap = true, silent = true })

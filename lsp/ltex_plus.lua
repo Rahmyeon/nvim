@@ -18,7 +18,7 @@ local function get_language_id(_, filetype)
 end
 
 
-vim.lsp.config.ltex_plus = ({
+return {
   -- capabilities = capabilities,
   -- on_attach = on_attach,
   filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd", "context", "html", "xhtml", "mail", "text" },
@@ -56,7 +56,6 @@ vim.lsp.config.ltex_plus = ({
       },
 		},
 	},
-})
+}
 
 
-vim.lsp.enable({'ltex_plus'})
