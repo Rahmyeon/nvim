@@ -89,8 +89,3 @@ end
 vim.o.exrc = true  -- Enable reading local config files
 vim.o.secure = true  -- Prevent unsafe commands in local configs
 
--- vim.g.dbs = {
---   {name = 'dev', url = 'postgresql://postgres:Final4rce100%25@localhost:5432/Comp378questions'},
--- }
-
-
