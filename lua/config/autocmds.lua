@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Hightlight selection on yank',
   pattern = '*',
   callback = function()
-    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+    vim.hl.on_yank { higroup = 'IncSearch', timeout = 500 }
   end,
 })
 
@@ -158,13 +158,52 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 
+-- vim.opt.cmdheight = 0
+-- vim.api.nvim_create_autocmd({ 'CmdlineEnter', "CmdlineLeave" }, {
+--   group = vim.api.nvim_create_augroup("cmdline-auto-hide", { clear = true }),
+--   callback = function(args)
+--     local target_height = args.event == 'CmdlineEnter' and 1 or 0
+--     if vim.opt_local.cmdheight:get() ~= target_height then
+--       vim.opt_local.cmdheight = target_height
+--       vim.cmd.redrawstatus()
+--     end
+--   end,
+-- })
+
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "cmd",
+-- 	callback = function()
+-- 		local ui2 = require("vim._core.ui2")
+-- 		vim.schedule(function()
+-- 			local win = ui2.wins and ui2.wins.cmd
+-- 			if win and vim.api.nvim_win_is_valid(win) then
+-- 				local win_config = vim.api.nvim_win_get_config(win)
+-- 				local width = win_config.width or math.floor(vim.o.columns * 0.6)
+-- 				local height = win_config.height or 1
+-- 				local row = (vim.o.lines - height) / 2
+-- 				local col = (vim.o.columns - width) / 2
+-- 				pcall(vim.api.nvim_win_set_config, win, {
+-- 					relative = "editor",
+-- 					row = row,
+-- 					col = col,
+-- 					width = width,
+-- 					height = height,
+-- 					anchor = "NW",
+-- 					border = "rounded",
+--                     style = "minimal"
+-- 				})
+-- 			end
+-- 		end)
+-- 	end,
+-- })
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --   pattern = "markdown",
 --   callback = function()
 --     vim.cmd("TSBufEnable highlight")
 --   end,
--- })
+--g})
 
 -- vim.api.nvim_set_hl(0, 'FloatBorder', {
 --   border = 'rounded',

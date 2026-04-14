@@ -235,6 +235,11 @@ end, { desc = "Insert digraph safely" })
 vim.keymap.set({"n", "v", "o"}, "o", "<Nop>")
 vim.keymap.set({"n", "v", "o"}, "O", "<Nop>")
 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- Faster response and prevent issues
 -- vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- vim.keymap.set('i', 'kj', '<Esc>', { noremap = true, silent = true })

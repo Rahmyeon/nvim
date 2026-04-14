@@ -6,6 +6,7 @@ local languages = {
   "markdown",
   "toml",
   "json",
+  -- "ps1",
   "java",
   -- "conf",
   "php"

@@ -45,6 +45,9 @@ require("lazy").setup({
 	  cache = {
 	  	enabled = true,
 	  },
+    rocks = {
+      enabled = false,
+    },
 	  rtp = {
       reset = true,
 	  	disabled_plugins = {
@@ -53,7 +56,7 @@ require("lazy").setup({
 	  		"netrwPlugin",
 	  		"gzip",
 	  		"tarPlugin",
-	  		"tohtml",
+	  		-- "tohtml",
 	  		"tutor",
 	  		"zipPlugin",
 	  	},
@@ -99,18 +102,21 @@ end
 
 -- vim.cmd.colorscheme("catppuccin-latte")
 -- vim.cmd("colorscheme vague")
-require("config.options")
-require("config.autocmds")
+-- require("config.options")
+-- require("config.autocmds")
+-- require("config.floatingcmdline")
 -- require("config.treesitter")
-require("config.lsp_options")
+-- require("config.lsp_options")
 -- require("lsp")
-vim.lsp.enable({'lua_ls', 'jdtls', 'ltex_plus', 'marksman'})
 -- vim.lsp.enable({'jdtls'})
 -- vim.lsp.enable({'ltex_plus'})
 -- vim.lsp.enable({'marksman'})
-
+require("config")
 require("statusline")
-require("config.keymaps")
+vim.lsp.enable({'lua_ls', 'jdtls', 'ltex_plus', 'marksman'})
+-- require("config.keymaps")
+-- require("config.fcl2")
+-- require("config.fcl3")
 -- require("config.markdown")
 require("oil").setup()
 -- require('mini.surround').setup()
@@ -121,29 +127,6 @@ require('mini.clue').setup()
 require("better_escape").setup()
 -- require('mini.hipatterns').setup()
 -- require('mini.operators').setup()
-require("config.plugin_options")
-require('vim._core.ui2').enable({
-  enable = true, -- Whether to enable or disable the UI.
-  msg = { -- Options related to the message module.
-    ---@type 'cmd'|'msg' Default message target, either in the
-    ---cmdline or in a separate ephemeral message window.
-    ---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
-    ---or table mapping |ui-messages| kinds and triggers to a target.
-    targets = 'cmd',
-    cmd = { -- Options related to messages in the cmdline window.
-      height = 0.5 -- Maximum height while expanded for messages beyond 'cmdheight'.
-    },
-    dialog = { -- Options related to dialog window.
-      height = 0.5, -- Maximum height.
-    },
-    msg = { -- Options related to msg window.
-      height = 0.5, -- Maximum height.
-      timeout = 4000, -- Time a message is visible in the message window.
-    },
-    pager = { -- Options related to message window.
-      height = 1, -- Maximum height.
-    },
-  },
-})
--- require('mini.pick').setup()
+-- require("config.plugin_options")
+-- -- require('mini.pick').setup()
 -- require('colorizer').setup()
