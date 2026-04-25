@@ -216,3 +216,6 @@ vim.api.nvim_create_autocmd("User", {
 --     vim.wo.winbar = "%!v:lua.require'statusline'.render()"
 --   end,
 -- })
+--
+--
+

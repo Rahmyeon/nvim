@@ -28,6 +28,18 @@ for i = string.byte('A'), string.byte('Z') do
 	map('n', 'dm' .. letter, ':delmarks ' .. letter .. '<CR>', opts)
 end
 
+
+for i = string.byte('a'), string.byte('z') do
+	local letter = string.char(i)
+	map('n', '<leader>p' .. letter, ':put ' .. letter .. '<CR>', opts)
+end
+
+for i = string.byte('a'), string.byte('z') do
+	local letter = string.char(i)
+	map({"v", "x"}, '<leader>y' .. letter, ':yank ' .. letter .. '<CR>', opts)
+end
+
+
 map({ "n", "v", "x" }, ";", ":", { desc = "Self explanatory" })
 map({ "n", "v", "x" }, ":", ";", { desc = "Self explanatory" })
 map({ "n", "v", "x" }, "<C-s>", [[:s/\V]], { desc = "Enter substitue mode in selection" })
@@ -142,11 +154,17 @@ map("n", "<leader>dt", function()
    end
 end)
 
-map("n", "<leader>pa", function()
+
+map("n", "<leader>da", function()
 	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
 	print("file:", path)
 end)
+-- map("n", "<leader>pa", function()
+-- 	local path = vim.fn.expand("%:p")
+-- 	vim.fn.setreg("+", path)
+-- 	print("file:", path)
+-- end)
 
 map({ "n" }, "<C-f>", "<Cmd>Open .<CR>", { desc = "Open current directory in Finder." })
 
@@ -154,6 +172,7 @@ map("n", "Y", "y$", { desc = " Yank to the end of the line"})
 map({"n", "v"}, "<leader>dd", '"_d', { desc = "Delete without yanking"})
 
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
 map("n", "<leader>o", require("oil").toggle_float, { desc = "toggle oil float" })
 
 map("n", "<C-q>", ":copen<CR>", { silent = true })
@@ -238,8 +257,12 @@ vim.keymap.set({"n", "v", "o"}, "O", "<Nop>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set('n', '<leader>R', function()
+  local session = vim.fn.stdpath('state') .. '/restart_session.vim'
+  vim.cmd('mksession! ' .. vim.fn.fnameescape(session))
+  vim.cmd('restart source ' .. vim.fn.fnameescape(session))
+end, { desc = 'Restart Neovim' })
 -- Faster response and prevent issues
 -- vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- vim.keymap.set('i', 'kj', '<Esc>', { noremap = true, silent = true })

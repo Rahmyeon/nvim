@@ -29,36 +29,77 @@ end
 
 --- Mode display
 function M.mode_component()
+
+  -- local mode_to_str = {
+  --  ['n'] = '~',
+  --  ['no'] = 'OP-PENDING',
+  --  ['nov'] = 'OP-PENDING',
+  --  ['noV'] = 'OP-PENDING',
+  --  ['no\22'] = 'OP-PENDING',
+  --  ['niI'] = '~',
+  --  ['niR'] = '~',
+  --  ['niV'] = '~',
+  --  ['nt'] = '~',
+  --  ['ntT'] = '~',
+  --  ['v'] = 'VISUAL',
+  --  ['vs'] = 'VISUAL',
+  --  ['V'] = 'VISUAL',
+  --  ['Vs'] = 'VISUAL',
+  --  ['\22'] = 'VISUAL',
+  --  ['\22s'] = 'VISUAL',
+  --  ['s'] = 'SELECT',
+  --  ['S'] = 'SELECT',
+  --  ['\19'] = 'SELECT',
+  --  ['i'] = 'INSERT',
+  --  ['ic'] = 'INSERT',
+  --  ['ix'] = 'INSERT',
+  --  ['R'] = 'REPLACE',
+  --  ['Rc'] = 'REPLACE',
+  --  ['Rx'] = 'REPLACE',
+  --  ['Rv'] = 'VIRT REPLACE',
+  --  ['Rvc'] = 'VIRT REPLACE',
+  --  ['Rvx'] = 'VIRT REPLACE',
+  --  ['c'] = 'COMMAND',
+  --  ['cv'] = 'VIM EX',
+  --  ['ce'] = 'EX',
+  --  ['r'] = 'PROMPT',
+  --  ['rm'] = 'MORE',
+  --  ['r?'] = 'CONFIRM',
+  --  ['!'] = 'SHELL',
+  --  ['t'] = 'TERMINAL',
+  -- }
+
+
   local mode_to_str = {
-   ['n'] = 'NORMAL',
+   ['n'] = '~',
    ['no'] = 'OP-PENDING',
    ['nov'] = 'OP-PENDING',
    ['noV'] = 'OP-PENDING',
    ['no\22'] = 'OP-PENDING',
-   ['niI'] = 'NORMAL',
-   ['niR'] = 'NORMAL',
-   ['niV'] = 'NORMAL',
-   ['nt'] = 'NORMAL',
-   ['ntT'] = 'NORMAL',
-   ['v'] = 'VISUAL',
-   ['vs'] = 'VISUAL',
-   ['V'] = 'VISUAL',
-   ['Vs'] = 'VISUAL',
-   ['\22'] = 'VISUAL',
-   ['\22s'] = 'VISUAL',
-   ['s'] = 'SELECT',
-   ['S'] = 'SELECT',
-   ['\19'] = 'SELECT',
-   ['i'] = 'INSERT',
-   ['ic'] = 'INSERT',
-   ['ix'] = 'INSERT',
+   ['niI'] = '~',
+   ['niR'] = '~',
+   ['niV'] = '~',
+   ['nt'] = '~',
+   ['ntT'] = '~',
+   ['v'] = 'V',
+   ['vs'] = 'V',
+   ['V'] = 'V',
+   ['Vs'] = 'V',
+   ['\22'] = 'V',
+   ['\22s'] = 'V',
+   ['s'] = 'S',
+   ['S'] = 'S',
+   ['\19'] = 'S',
+   ['i'] = 'I',
+   ['ic'] = 'I',
+   ['ix'] = 'I',
    ['R'] = 'REPLACE',
    ['Rc'] = 'REPLACE',
    ['Rx'] = 'REPLACE',
    ['Rv'] = 'VIRT REPLACE',
    ['Rvc'] = 'VIRT REPLACE',
    ['Rvx'] = 'VIRT REPLACE',
-   ['c'] = 'COMMAND',
+   ['c'] = 'C',
    ['cv'] = 'VIM EX',
    ['ce'] = 'EX',
    ['r'] = 'PROMPT',
@@ -67,15 +108,16 @@ function M.mode_component()
    ['!'] = 'SHELL',
    ['t'] = 'TERMINAL',
   }
+
   local mode = mode_to_str[vim.api.nvim_get_mode().mode] or 'UNKNOWN'
   local hl = 'Other'
-  if mode:find 'NORMAL' then
+  if mode:find '~' then
     hl = 'Normal'
-  elseif mode:find 'VISUAL' then
+  elseif mode:find 'V' then
     hl = 'Visual'
-  elseif mode:find 'INSERT' or mode:find 'SELECT' then
+  elseif mode:find 'I' or mode:find 'S' then
     hl = 'Insert'
-  elseif mode:find 'COMMAND' or mode:find 'TERMINAL' or mode:find 'EX' then
+  elseif mode:find 'C' or mode:find 'TERMINAL' or mode:find 'EX' then
 
     hl = 'Command'
   end
@@ -135,9 +177,8 @@ function M.diagnostics_component()
   return table.concat(parts, ' ')
 end
 
---- Filetype + devicons
 function M.filetype_component()
-  local devicons = require 'mini.icons'
+  -- local devicons = require 'mini.icons'
   -- local devicons = require 'nvim-web-devicons'
   local filetype = vim.bo.filetype
   if filetype == '' then
@@ -146,13 +187,32 @@ function M.filetype_component()
   local buf_name = vim.api.nvim_buf_get_name(0)
   local name = vim.fn.fnamemodify(buf_name, ':t')
   -- local icon, icon_hl = devicons.get_icon(name, ext)
-  local icon, icon_hl = devicons.get("file", name)
-  if not icon then
-    icon, icon_hl = devicons.get_icon_by_filetype(filetype, { default = true })
-  end
-  icon_hl = M.get_or_create_hl(icon_hl or "Normal")
-  return string.format('%%#%s#%s %%#StatusLineTitle#%s', icon_hl, icon or "", filetype)
+  -- local icon, icon_hl = devicons.get("file", name)
+  -- if not icon then
+  --   icon, icon_hl = devicons.get_icon_by_filetype(filetype, { default = true })
+  -- end
+  -- icon_hl = M.get_or_create_hl(icon_hl or "Normal")
+  return string.format('%%#StatusLineTitle#%s', filetype)
 end
+
+--- Filetype + devicons
+-- function M.filetype_component()
+--   local devicons = require 'mini.icons'
+--   -- local devicons = require 'nvim-web-devicons'
+--   local filetype = vim.bo.filetype
+--   if filetype == '' then
+--     filetype = '[No Name]'
+--   end
+--   local buf_name = vim.api.nvim_buf_get_name(0)
+--   local name = vim.fn.fnamemodify(buf_name, ':t')
+--   -- local icon, icon_hl = devicons.get_icon(name, ext)
+--   local icon, icon_hl = devicons.get("file", name)
+--   if not icon then
+--     icon, icon_hl = devicons.get_icon_by_filetype(filetype, { default = true })
+--   end
+--   icon_hl = M.get_or_create_hl(icon_hl or "Normal")
+--   return string.format('%%#%s#%s %%#StatusLineTitle#%s', icon_hl, icon or "", filetype)
+-- end
 
 --- Encoding
 function M.encoding_component()
@@ -218,7 +278,7 @@ function M.lsp_component()
   for _, client in ipairs(clients) do
     table.insert(names, client.name)
   end
-  return string.format("%%#StatusLineItalic#LSP: %%#StatusLineTitle#%s", table.concat(names, ", "))
+  return string.format("%%#StatusLineItalic#LSP:%%#StatusLineTitle#%s", table.concat(names, ","))
 end
 
 --- Position

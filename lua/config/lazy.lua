@@ -48,6 +48,7 @@ require("lazy").setup({
     rocks = {
       enabled = false,
     },
+
 	  rtp = {
       reset = true,
 	  	disabled_plugins = {
@@ -124,8 +125,11 @@ require('mini.pairs').setup()
 require('mini.icons').setup()
 require('mini.ai').setup()
 require('mini.clue').setup()
-require("better_escape").setup()
 -- require('mini.hipatterns').setup()
+require("better_escape").setup()
+-- require('mini.sessions').setup()
+-- require("mini.sessions").setup()
+-- vim.keymap.set("n", "<leader>R", "<Cmd>lua MiniSessions.restart()<CR>", {desc = "Restart neovim properly"})
 -- require('mini.operators').setup()
 -- require("config.plugin_options")
 -- -- require('mini.pick').setup()

@@ -13,7 +13,7 @@ vim.diagnostic.config({
 })
 
 
-vim.lsp.document_color.enable()
+-- vim.lsp.document_color.enable()
 
 local diagnostics = require("util.icons").diagnostics
 local M = {}
