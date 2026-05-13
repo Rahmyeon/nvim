@@ -12,7 +12,7 @@ return {
   },
   keys = {
     {
-      "of", 
+      "<leader>j", 
       mode = {"n"},
       function ()
         require("flash").jump({
@@ -24,10 +24,10 @@ return {
           jump = { offset = 0 }
         }) 
       end,
-      desc = "flash f"
+      desc = "flash j"
     },
     {
-      "of", 
+      "<leader>j", 
       mode = {"x", "o" },
       function ()
         require("flash").jump({
@@ -39,10 +39,10 @@ return {
           jump = { offset = 1 }
         }) 
       end,
-      desc = "flash f"
+      desc = "flash j"
     },
     {
-      "oF", 
+      "<leader>J", 
       mode = { "n" }, 
       function () 
         require("flash").jump({
@@ -54,10 +54,10 @@ return {
           jump = { offset = 0 }
         }) 
       end,
-      desc = "flash F"
+      desc = "flash J"
     },
     {
-      "oF", 
+      "<leader>F", 
       mode = { "x", "o" }, 
       function () 
         require("flash").jump({
@@ -69,10 +69,10 @@ return {
           jump = { offset = 1 }
         }) 
       end,
-      desc = "flash F"
+      desc = "flash J"
     },
     {
-      "ot", 
+      "<leader>k", 
       mode = { "n" }, 
       function ()
         require("flash").jump({
@@ -86,10 +86,10 @@ return {
           jump = { offset = -1 }
         })
       end,
-      desc = "flash t"
+      desc = "flash k"
     },
     {
-      "ot", 
+      "<leader>k", 
       mode = { "x", "o" }, 
       function ()
         require("flash").jump({
@@ -103,10 +103,10 @@ return {
           jump = { offset = 0 }
         })
       end,
-      desc = "flash t"
+      desc = "flash k"
     },
     {
-      "oT",
+      "<leader>K",
       mode = { "n" },
       function ()
         require("flash").jump({
@@ -119,10 +119,10 @@ return {
           jump = { offset = -1 }
         })
       end,
-      desc = "flash T"
+      desc = "flash K"
     },
     {
-      "oT",
+      "<leader>K",
       mode = { "x", "o" },
       function ()
         require("flash").jump({
@@ -137,8 +137,8 @@ return {
       end,
       desc = "flash T"
     },
-    { "ok", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "Ok", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    -- { "ok", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    -- { "Ok", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
     { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },

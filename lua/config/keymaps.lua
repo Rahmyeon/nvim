@@ -39,7 +39,8 @@ for i = string.byte('a'), string.byte('z') do
 	map({"v", "x"}, '<leader>y' .. letter, ':yank ' .. letter .. '<CR>', opts)
 end
 
-
+map({ "n", "v", "x" }, 'q;', 'q:', { desc = 'Open command-line window' })
+-- map('n', 'q;', 'q:', { desc = 'Open command-line window' })
 map({ "n", "v", "x" }, ";", ":", { desc = "Self explanatory" })
 map({ "n", "v", "x" }, ":", ";", { desc = "Self explanatory" })
 map({ "n", "v", "x" }, "<C-s>", [[:s/\V]], { desc = "Enter substitue mode in selection" })
@@ -251,8 +252,8 @@ vim.keymap.set("i", "<C-b>", function()
   end
 end, { desc = "Insert digraph safely" })
 -- vim.keymap.set({"n","i","v"}, "<C-c>", "<Esc>", { noremap = true })
-vim.keymap.set({"n", "v", "o"}, "o", "<Nop>")
-vim.keymap.set({"n", "v", "o"}, "O", "<Nop>")
+-- vim.keymap.set({"n", "v", "o"}, "o", "<Nop>")
+-- vim.keymap.set({"n", "v", "o"}, "O", "<Nop>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -263,6 +264,21 @@ vim.keymap.set('n', '<leader>R', function()
   vim.cmd('mksession! ' .. vim.fn.fnameescape(session))
   vim.cmd('restart source ' .. vim.fn.fnameescape(session))
 end, { desc = 'Restart Neovim' })
+
+vim.keymap.set("v", "<leader>ms", function()
+  local lines = vim.fn.getline("'<", "'>")
+  local out = {}
+
+  for _, line in ipairs(lines) do
+    local expr = line:gsub("%s+", "")
+    local result = load("return " .. expr)()
+
+    table.insert(out, line .. " = " .. result)
+  end
+
+  vim.fn.setline("'<", out)
+end)
+
 -- Faster response and prevent issues
 -- vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- vim.keymap.set('i', 'kj', '<Esc>', { noremap = true, silent = true })

@@ -177,22 +177,33 @@ function M.diagnostics_component()
   return table.concat(parts, ' ')
 end
 
+-- function M.filetype_component()
+--   -- local devicons = require 'mini.icons'
+--   -- local devicons = require 'nvim-web-devicons'
+--   local filetype = vim.bo.filetype
+--   if filetype == '' then
+--     filetype = '[No Name]'
+--   end
+--   local buf_name = vim.api.nvim_buf_get_name(0)
+--   local name = vim.fn.fnamemodify(buf_name, ':t')
+--   -- local icon, icon_hl = devicons.get_icon(name, ext)
+--   -- local icon, icon_hl = devicons.get("file", name)
+--   -- if not icon then
+--   --   icon, icon_hl = devicons.get_icon_by_filetype(filetype, { default = true })
+--   -- end
+--   -- icon_hl = M.get_or_create_hl(icon_hl or "Normal")
+--   return string.format('%%#StatusLineTitle#%s', filetype)
+-- end
+
 function M.filetype_component()
-  -- local devicons = require 'mini.icons'
-  -- local devicons = require 'nvim-web-devicons'
-  local filetype = vim.bo.filetype
-  if filetype == '' then
-    filetype = '[No Name]'
-  end
   local buf_name = vim.api.nvim_buf_get_name(0)
   local name = vim.fn.fnamemodify(buf_name, ':t')
-  -- local icon, icon_hl = devicons.get_icon(name, ext)
-  -- local icon, icon_hl = devicons.get("file", name)
-  -- if not icon then
-  --   icon, icon_hl = devicons.get_icon_by_filetype(filetype, { default = true })
-  -- end
-  -- icon_hl = M.get_or_create_hl(icon_hl or "Normal")
-  return string.format('%%#StatusLineTitle#%s', filetype)
+
+  if name == '' then
+    name = '[No Name]'
+  end
+
+  return string.format('%%#StatusLineTitle#%s', name)
 end
 
 --- Filetype + devicons
@@ -254,32 +265,92 @@ vim.api.nvim_create_autocmd('LspProgress', {
 })
 
 --- Active LSP servers or progress
+-- function M.lsp_component()
+--   -- Show progress first if present
+--   if progress_status.client and progress_status.title then
+--     if not vim.startswith(vim.api.nvim_get_mode().mode, 'i') then
+--       return table.concat {
+--         '%#StatuslineSpinner#󱥸 ',
+--         string.format('%%#StatuslineTitle#%s  ', progress_status.client),
+--         string.format('%%#StatuslineItalic#%s...', progress_status.title),
+--       }
+--     end
+--   end
+--
+--   -- Otherwise show attached clients
+--   if not rawget(vim, "lsp") or not vim.lsp.get_clients then
+--     return ""
+--   end
+--   local clients = vim.lsp.get_clients { bufnr = 0 }
+--   if #clients == 0 then
+--     return ""
+--   end
+--   local names = {}
+--   for _, client in ipairs(clients) do
+--     table.insert(names, client.name)
+--   end
+--   return string.format("%%#StatusLineItalic#LSP:%%#StatusLineTitle#%s", table.concat(names, ","))
+-- end
+--
+
+-- function M.lsp_component()
+--   -- Show progress first if present
+--   if progress_status.client and progress_status.title then
+--     if not vim.startswith(vim.api.nvim_get_mode().mode, 'i') then
+--       return table.concat {
+--         '%#StatuslineSpinner#󱥸 ',
+--         string.format('%%#StatuslineTitle#%s  ', progress_status.client),
+--         string.format('%%#StatuslineItalic#%s...', progress_status.title),
+--       }
+--     end
+--   end
+--
+--   -- Otherwise show attached clients
+--   if not rawget(vim, "lsp") or not vim.lsp.get_clients then
+--     return ""
+--   end
+--   local clients = vim.lsp.get_clients { bufnr = 0 }
+--   if #clients == 0 then
+--     return ""
+--   end
+--
+--   -- Single client: just the name
+--   if #clients == 1 then
+--     -- return string.format("%%#StatusLineItalic#LSP:%%#StatusLineTitle#%s", clients[1].name)
+--     return string.format("%%#StatusLineItalic#λ:%%#StatusLineTitle#%s", clients[1].name)
+--   end
+--
+--   -- Multiple clients: first name + count of additional ones
+--   return string.format(
+--     -- "%%#StatusLineItalic#LSP:%%#StatusLineTitle#%s+%d",
+--     "%%#StatusLineItalic#λ:%%#StatusLineTitle#%s+%d",
+--     clients[1].name,
+--     #clients - 1
+--   )
+-- end
+--
 function M.lsp_component()
   -- Show progress first if present
   if progress_status.client and progress_status.title then
     if not vim.startswith(vim.api.nvim_get_mode().mode, 'i') then
       return table.concat {
-        '%#StatuslineSpinner#󱥸 ',
-        string.format('%%#StatuslineTitle#%s  ', progress_status.client),
-        string.format('%%#StatuslineItalic#%s...', progress_status.title),
+        -- '%#StatuslineSpinner#󱥸 ',
+        string.format('%%#StatuslineTitle#%s ', progress_status.client),
+        string.format('%%#StatuslineItalic#%s?', progress_status.title),
       }
     end
   end
 
-  -- Otherwise show attached clients
+  -- Count attached LSP clients
   if not rawget(vim, "lsp") or not vim.lsp.get_clients then
     return ""
   end
-  local clients = vim.lsp.get_clients { bufnr = 0 }
-  if #clients == 0 then
-    return ""
-  end
-  local names = {}
-  for _, client in ipairs(clients) do
-    table.insert(names, client.name)
-  end
-  return string.format("%%#StatusLineItalic#LSP:%%#StatusLineTitle#%s", table.concat(names, ","))
+
+  local count = #vim.lsp.get_clients { bufnr = 0 }
+
+  return string.format("%%#StatusLineItalic#λ:%%#StatusLineTitle#%d", count)
 end
+
 
 --- Position
 -- function M.position_component()

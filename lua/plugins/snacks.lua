@@ -14,7 +14,7 @@ return {
     --     enabled = false,
     --   }
     -- },
-    image = {doc = { inline = true } },
+    image = {force = true},
     quickfile = {enabled = true},
     -- gitbrowse = {enabled = true},
     dashboard = {

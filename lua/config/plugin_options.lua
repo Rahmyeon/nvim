@@ -10,13 +10,14 @@ miniclue.setup({
   window = {
     -- which-key usually appears fairly quickly. 
     -- Default is 1000ms, suggested 0-500ms.
-    -- delay = 0,
+    delay = 500,
 
     config = {
       -- WIDTH: 
       -- 'auto' is good, but to get the full-width "bar" look of which-key,
       -- you can try setting a fixed large number or `vim.o.columns`.
       width = 'auto',
+      -- width = vim.o.columns,
 
       -- POSITION: 
       -- This is the magic. Anchor to South-West (Bottom-Left).
